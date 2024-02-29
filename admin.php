@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
         $row = $result->fetch_assoc();
 
         // Verify password
-        if (password_verify($password, $row['password'])) {
+        if (password_verify($password, $row['password_hash'])) {
             // Password matches, set session variables
             $_SESSION['user_name'] = $row['name'];
             $_SESSION['user_id'] = uniqid(); // You can generate a unique user id here
