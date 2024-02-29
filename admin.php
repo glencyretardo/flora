@@ -2,21 +2,13 @@
 
 session_start();
 
+require_once  'database.php';
+
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['pass'];
 
-    // Connect to your MySQL database
-    $servername = "localhost";
-    $username = "root";
-    $db_password = "";
-    $dbname = "flora";
-
-    $conn = new mysqli($servername, $username, $db_password, $dbname);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+   
 
     // Prepare and execute the query to fetch user data based on email
     $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");

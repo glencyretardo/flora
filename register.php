@@ -2,35 +2,48 @@
 
 session_start();
 
+require_once  'database.php';
+
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $password = md5($_POST['pass']);
-    $confirmPassword = md5($_POST['cpass']);
+    $password = password_hash($_POST['pass'], PASSWORD_BCRYPT);
+    $confirmPassword = password_hash($_POST['cpass'], PASSWORD_BCRYPT);
 
-    // Check if user with the same email already exists
-    if (isset($_SESSION['users'][$email])) {
+    // Check if user with the same email already exists in the database
+    $checkUserQuery = "SELECT * FROM users WHERE email = ?";
+    $stmt = $conn->prepare($checkUserQuery);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
         $message[] = 'User already exists!';
     } else {
         // Check if passwords match
-        if ($password != $confirmPassword) {
+        if (!password_verify($_POST['pass'], $confirmPassword)) {
             $message[] = 'Confirm password not matched!';
         } else {
-            // Add user to the session
-            $_SESSION['users'][$email] = [
-                'name' => $name,
-                'password' => $password,
-            ];
+            // Insert user into the database
+            $insertUserQuery = "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)";
+            $stmt = $conn->prepare($insertUserQuery);
+            $stmt->bind_param("sss", $name, $email, $password);
+            $stmt->execute();
+
             $message[] = 'Registered successfully!';
             // Redirect to login page with pre-filled email
             header('location: login.php?email=' . urlencode($email));
             exit();
         }
     }
+
+    // Close the prepared statement
+    $stmt->close();
 }
 
+// Close the database connection
+$conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

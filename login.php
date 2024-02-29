@@ -2,21 +2,43 @@
 
 session_start();
 
+require_once  'database.php';
+
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
-    $password = md5($_POST['pass']);
+    $password = $_POST['pass'];
 
+   
 
-    if (isset($_SESSION['users'][$email]) && $_SESSION['users'][$email]['password'] === $password) {
-        $user = $_SESSION['users'][$email];
+    // Prepare and execute the query to fetch user data based on email
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-        $_SESSION['user_name'] = $user['name'];
-        $_SESSION['user_id'] = uniqid(); 
-        header('location: home.php');
+    if ($result->num_rows == 1) {
+        // User found, fetch user data
+        $row = $result->fetch_assoc();
+
+        // Verify password
+        if (password_verify($password, $row['password_hash'])) {
+            // Password matches, set session variables
+            $_SESSION['user_name'] = $row['name'];
+            $_SESSION['user_id'] = uniqid(); // You can generate a unique user id here
+            header('location: home.php'); // Redirect to home page after successful login
+            exit();
+        } else {
+            $message[] = 'Incorrect email or password!';
+        }
     } else {
         $message[] = 'Incorrect email or password!';
     }
+
+    // Close database connection
+    $stmt->close();
+    $conn->close();
 }
+
 
 ?>
 
@@ -58,6 +80,9 @@ if (isset($_POST['submit'])) {
             <input type="password" name="pass" class="box" placeholder="Enter your password" required>
             <input type="submit" class="btn" name="submit" value="Login now">
             <p>Don't have an account? <a href="register.php">Register now</a></p>
+            <p> <a href="forgotpassword.php"> forgot password?  </a></p>
+
+
         </form>
 
     </section>
