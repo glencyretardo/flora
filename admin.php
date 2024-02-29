@@ -4,21 +4,53 @@ session_start();
 
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
-    $password = md5($_POST['pass']);
+    $password = $_POST['pass'];
 
+    // Connect to your MySQL database
+    $servername = "localhost";
+    $username = "root";
+    $db_password = "";
+    $dbname = "flora";
 
-    if (isset($_SESSION['users'][$email]) && $_SESSION['users'][$email]['password'] === $password) {
-        $user = $_SESSION['users'][$email];
+    $conn = new mysqli($servername, $username, $db_password, $dbname);
 
-        $_SESSION['user_name'] = $user['name'];
-        $_SESSION['user_id'] = uniqid(); 
-        header('location: home.php');
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Prepare and execute the query to fetch user data based on email
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 1) {
+        // User found, fetch user data
+        $row = $result->fetch_assoc();
+
+        // Verify password
+        if (password_verify($password, $row['password'])) {
+            // Password matches, set session variables
+            $_SESSION['user_name'] = $row['name'];
+            $_SESSION['user_id'] = uniqid(); // You can generate a unique user id here
+            header('location: home.php'); // Redirect to home page after successful login
+            exit();
+        } else {
+            $message[] = 'Incorrect email or password!';
+        }
     } else {
         $message[] = 'Incorrect email or password!';
     }
+
+    // Close database connection
+    $stmt->close();
+    $conn->close();
 }
 
 ?>
+
+<!-- Your HTML form -->
+
 
 <!DOCTYPE html>
 <html lang="en">
