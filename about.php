@@ -35,7 +35,7 @@ session_start();
 
         <div class="content">
             <h3>why choose us?</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum odit voluptatum alias sed est in magni nihil nisi deleniti nostrum.</p>
+            <p>We offer a vast and diverse collection of flower arrangements that captivate the senses and elevate every occasion. As you explore the pages of our digital flowers, you'll quickly discover why choosing us is an remarkable experience in the world of botanical beauty.</p>
             <a href="shop.php" class="btn">shop now</a>
         </div>
 
@@ -45,7 +45,7 @@ session_start();
 
         <div class="content">
             <h3>what we provide?</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum odit voluptatum alias sed est in magni nihil nisi deleniti nostrum.</p>
+            <p>Flora provides a quality and affordable flowers for your loved ones. We will craft your memories with every bouquet.</p>
             <a href="contact.php" class="btn">contact us</a>
         </div>
 
@@ -63,7 +63,7 @@ session_start();
 
         <div class="content">
             <h3>who we are?</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum odit voluptatum alias sed est in magni nihil nisi deleniti nostrum.</p>
+            <p>Flora means 'flowers' in latin and flora was the Roman goddess of spring & flowering plants. We are from davao city that offers a blooming flower bouquet in every occasion.</p>
             <a href="#reviews" class="btn">clients reviews</a>
         </div>
 
@@ -79,7 +79,7 @@ session_start();
 
         <div class="box">
             <img src="images/img_jyp.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia animi consequatur nostrum cumque itaque ducimus, iure expedita voluptates. Minima, minus.</p>
+            <p>I love the flowers! Naguxtuhan ng asawa q. Wala aq masabi... kundi ang ganda at mabango...</p>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -92,7 +92,7 @@ session_start();
 
         <div class="box">
             <img src="images/img_hyunjin.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia animi consequatur nostrum cumque itaque ducimus, iure expedita voluptates. Minima, minus.</p>
+            <p>AAAACCCK. Ang gondo!! I like the way the flowers shine. My heart melts when my jowa gave it to me xoxo.</p>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -105,7 +105,7 @@ session_start();
 
         <div class="box">
             <img src="images/img_jungwon.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia animi consequatur nostrum cumque itaque ducimus, iure expedita voluptates. Minima, minus.</p>
+            <p>Nawala galit ni misis nong binigyan ku cya ng bulaklak. Palalayasin na xana aku sa bahay namen.. buti nalang sakto dumating yong bulaklak kaya d natuloy paglayas nya sa aken.. haha. ayos na ayos. 10/10 kayu sa aken.</p>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -118,7 +118,7 @@ session_start();
 
         <div class="box">
             <img src="images/img_momo.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia animi consequatur nostrum cumque itaque ducimus, iure expedita voluptates. Minima, minus.</p>
+            <p>Nagulat ako kasi akala ko may patay sa amin kasi may nagpa-deliver ng bulaklak yon pala surprise delivery sa akin ng asawa ko kasi anniversary pala namin. Bakit ba kasi pampatay binili niyang bulaklak. Mukha ba akong patay???</p>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -131,7 +131,7 @@ session_start();
 
         <div class="box">
             <img src="images/img_jk.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia animi consequatur nostrum cumque itaque ducimus, iure expedita voluptates. Minima, minus.</p>
+            <p>Dito ulit ako o-order kapag may ocassion. Hindi niyo man lang sa akin sinabi na mapaparami halik ng girlfriend ko kapag bibili ako sainyo. Bulaklak niyo lang pala ang solusyon para may extrang halik ako sa kanya ehehehe... salamat mga lodz..</p>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -144,7 +144,7 @@ session_start();
 
         <div class="box">
             <img src="images/img_jihyo.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia animi consequatur nostrum cumque itaque ducimus, iure expedita voluptates. Minima, minus.</p>
+            <p>HUWAG KAYONG BIBILI SA SHOP NILA! BAKIT? KASI ANG GANDA! MABANGO PA! FEEL KO PINABANGUHAN NILA E2. PERO EME LANG. WORTH IT PERA NIYO MGA BEHHH.</p>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
