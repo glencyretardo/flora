@@ -1,19 +1,25 @@
 <?php
-
 include 'database.php';
-
 session_start();
 
+// Ensure that user_id is set before using it
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+} else {
+    // Handle the case where the user is not logged in
+    // Redirect to a login page or handle it as per your application logic
+    header('Location: login.php');
+    exit();
+}
 
-if(isset($_POST['add_to_wishlist'])){
+if (isset($_POST['add_to_wishlist'])) {
+    $product_id = $_POST['product_id']; // Adjust this based on your form field name
+    $product_name = $_POST['product_name'];
+    $product_price = $_POST['product_price'];
+    $product_image = $_POST['product_image'];
 
-    $product_id = $_POST['ProductID'];
-    $product_name = $_POST['ProductName'];
-    $product_price = $_POST['Price'];
-    $product_image = $_POST['image'];
-
+    // Use the correct column names in the SQL query
     $check_wishlist_numbers = mysqli_query($conn, "SELECT * FROM `wishlist` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
-
     $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
 
     if(mysqli_num_rows($check_wishlist_numbers) > 0){
@@ -27,14 +33,14 @@ if(isset($_POST['add_to_wishlist'])){
 
 }
 
-if(isset($_POST['add_to_cart'])){
-
-    $product_id = $_POST['ProductID'];
-    $product_name = $_POST['ProductName'];
-    $product_price = $_POST['Price'];
-    $product_image = $_POST['image'];
+if (isset($_POST['add_to_cart'])) {
+    $product_id = $_POST['product_id']; // Adjust this based on your form field name
+    $product_name = $_POST['product_name'];
+    $product_price = $_POST['product_price'];
+    $product_image = $_POST['product_image'];
     $product_quantity = $_POST['product_quantity'];
 
+    // Use the correct column names in the SQL query
     $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
 
     if(mysqli_num_rows($check_cart_numbers) > 0){
