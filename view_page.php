@@ -5,10 +5,10 @@ session_start();
 
 
 if (isset($_POST['add_to_wishlist'])) {
-    $product_id = $_POST['ProductID'];
-    $product_name = $_POST['ProductName'];
-    $product_price = $_POST['Price'];
-    $product_image = $_POST['image'];
+    $product_id = $_POST['product_id'];
+    $product_name = $_POST['product_name'];
+    $product_price = $_POST['product_price'];
+    $product_image = $_POST['product_image'];
 
     $check_wishlist_numbers = mysqli_query($conn, "SELECT * FROM `wishlist` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
 
