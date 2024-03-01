@@ -2,6 +2,8 @@
 session_start();
 require_once 'database.php';
 
+$success_message = ''; // Variable to store success message
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve form data
     $name = isset($_POST['name']) ? $_POST['name'] : '';
@@ -22,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        echo "Data inserted successfully!";
+        $success_message = "Data inserted successfully!";
     } else {
         echo "Error: " . mysqli_error($conn);
     }
@@ -41,6 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    <title>contact</title>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
    <link rel="stylesheet" href="style.css">
+   <style>
+      .success-message {
+          display: none;
+          color: green; /* You can customize the color */
+      }
+   </style>
 </head>
 <body>
    
@@ -52,18 +60,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </section>
 
 <section class="contact">
-    <form action="" method="POST">
+    <form action="" method="POST" id="contactForm">
         <h3>send us a message!</h3>
         <input type="text" name="name" placeholder="enter your name" class="box" required> 
         <input type="email" name="email" placeholder="enter your email" class="box" required>
-        <input type="number" name="number" placeholder="enter your number" class="box" required>
+        <input type="tel" name="number" placeholder="Contact Number"  class="box" required>
         <textarea name="message" class="box" placeholder="enter your message" required cols="30" rows="10"></textarea>
         <input type="submit" value="send message" name="send" class="btn">
+        <div id="success-message" class="success-message"></div>
     </form>
 </section>
+
 
 <?php include 'footer.php'; ?>
 
 <script src="js/script.js"></script>
+<script>
+    // Add this JavaScript code to handle the success message and form reset
+    document.addEventListener('DOMContentLoaded', function () {
+        var contactForm = document.getElementById('contactForm');
+        var successMessage = document.getElementById('success-message');
+
+        contactForm.addEventListener('submit', function (event) {
+            // Prevent the form from submitting normally
+            event.preventDefault();
+
+            // Your AJAX or form submission logic here
+
+            // Display success message
+            successMessage.innerText = 'Data inserted successfully!';
+            successMessage.style.display = 'block';
+
+            // Reset form fields after 5 seconds
+            setTimeout(function () {
+                successMessage.style.display = 'none';
+                contactForm.reset();
+            }, 900);
+        });
+    });
+</script>
 </body>
 </html>
+
+
