@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
 require_once 'database.php';
 session_start();
@@ -12,7 +14,7 @@ if(isset($_POST['add_product'])){
    $image = $_FILES['image']['name'];
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
-   $image_folder = 'uploaded_img/'.$image;
+   $image_folder = __DIR__ . '/uploaded_img/' . $image;
 
    $select_product_name = mysqli_query($conn, "SELECT ProductName FROM `product` WHERE ProductName = '$name'") or die('query failed');
 
@@ -25,6 +27,7 @@ if(isset($_POST['add_product'])){
          if($image_size > 2000000){
             $message[] = 'Image size is too large!';
          } else {
+            error_log("Image Folder: " . $image_folder);
             move_uploaded_file($image_tmp_name, $image_folder);
             $message[] = 'Product added successfully!';
          }
@@ -87,11 +90,19 @@ if(isset($_GET['delete'])){
       <div class="box">
          <div class="price">₱<?php echo number_format($fetch_product['Price'], 2); ?> </div>
 
-         <img class="image" src="uploaded_img/<?php echo $fetch_product['image']; ?>" alt="">
+         <img class="image" src="/full/path/to/your/project/uploaded_img/<?php echo $fetch_product['image']; ?>" alt="">
+
+         <?php
+            // Corrected the variable name to $fetch_product['image']
+            $imagePath = 'uploaded_img/' . $fetch_product['image'];
+            echo "Image Path: $imagePath";
+         ?>
          <div class="name"><?php echo $fetch_product['ProductName']; ?></div>
          <div class="details"><?php echo $fetch_product['Description']; ?></div>
          <a href="admin_update_product.php?update=<?php echo $fetch_product['ProductID']; ?>" class="option-btn">update</a>
          <a href="admin_products.php?delete=<?php echo $fetch_product['ProductID']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
+
+
       </div>
       <?php
          }
