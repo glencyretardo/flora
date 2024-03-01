@@ -5,13 +5,13 @@ require_once  'database.php';
 if(isset($_POST['update_order'])){
    $OrderID = $_POST['OrderID'];
    $update_payment = $_POST['update_payment'];
-   mysqli_query($conn, "UPDATE `ordertable` SET payment_status = '$update_payment' WHERE id = '$OrderID'") or die('query failed');
+   mysqli_query($conn, "UPDATE ordertable SET payment_status = '$update_payment' WHERE id = '$OrderID'") or die('query failed');
    $message[] = 'payment status has been updated!';
 }
 
 if(isset($_GET['delete'])){
    $delete_id = $_GET['delete'];
-   mysqli_query($conn, "DELETE FROM `ordertable` WHERE id = '$delete_id'") or die('query failed');
+   mysqli_query($conn, "DELETE FROM ordertable WHERE id = '$delete_id'") or die('query failed');
    header('location:admin_orders.php');
 }
 
@@ -40,7 +40,7 @@ if(isset($_GET['delete'])){
 
       <?php
       
-      $select_orders = mysqli_query($conn, "SELECT * FROM `ordertable`") or die('query failed');
+      $select_orders = mysqli_query($conn, "SELECT * FROM ordertable") or die('query failed');
       if(mysqli_num_rows($select_orders) > 0){
          while($fetch_orders = mysqli_fetch_assoc($select_orders)){
       ?>
