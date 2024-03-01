@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
             $message[] = 'Confirm password not matched!';
         } else {
             // Insert user into the database
-            $insertUserQuery = "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)";
+            $insertUserQuery = "INSERT INTO adminregistration (name, email, password_hash) VALUES (?, ?, ?)";
             $stmt = $conn->prepare($insertUserQuery);
             $stmt->bind_param("sss", $name, $email, $password);
             $stmt->execute();
