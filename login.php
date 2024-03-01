@@ -19,12 +19,12 @@ if (isset($_POST['submit'])) {
     if ($result->num_rows == 1) {
         // User found, fetch user data
         $row = $result->fetch_assoc();
-
+    
         // Verify password
         if (password_verify($password, $row['password_hash'])) {
             // Password matches, set session variables
             $_SESSION['user_name'] = $row['name'];
-            $_SESSION['user_id'] = uniqid(); // You can generate a unique user id here
+            $_SESSION['user_id'] = $row['user_id']; // Assuming the user ID is stored in the database
             header('location: home.php'); // Redirect to home page after successful login
             exit();
         } else {
@@ -33,6 +33,7 @@ if (isset($_POST['submit'])) {
     } else {
         $message[] = 'Incorrect email or password!';
     }
+    
 
     // Close database connection
     $stmt->close();
