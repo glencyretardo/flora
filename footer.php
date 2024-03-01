@@ -3,7 +3,7 @@
     <div class="box-container">
 
         <div class="box">
-            <h3>quick links</h3>
+            <h3>customer service</h3>
             <a href="home.php">home</a>
             <a href="about.php">about</a>
             <a href="contact.php">contact</a>
@@ -11,7 +11,7 @@
         </div>
 
         <div class="box">
-            <h3>extra links</h3>
+            <h3>extras</h3>
             <a href="login.php">login</a>
             <a href="register.php">register</a>
             <a href="orders.php">my orders</a>
@@ -19,10 +19,16 @@
         </div>
 
         <div class="box">
-            <h3>contact info</h3>
+            <a href="home.php"><img src="images/flora_logo1.png" alt="Flower Shop Logo"></a>
+            
+        </div>
+
+
+        <div class="box">
+            <h3>contact us</h3>
             <p> <i class="fas fa-phone"></i> +123-456-7890 </p>
             <p> <i class="fas fa-phone"></i> +111-222-3333 </p>
-            <p> <i class="fas fa-envelope"></i> lavidaaa@gmail.com </p>
+            <p> <i class="fas fa-envelope"></i> floraa@flowershop.com </p>
             <p> <i class="fas fa-map-marker-alt"></i> davao city, philippines </p>
         </div>
 
@@ -36,6 +42,7 @@
 
     </div>
 
-    <div class="credit">&copy; copyright @ <?php echo date('Y'); ?> by <span>AARGHHHHHH</span> </div>
+    <div class="credit">
+    <span>La Rosa Flower Shop © 2021</span> </div>
 
 </section>
