@@ -35,7 +35,7 @@ session_start();
 
     <div class="box-container">
         <?php
-        $select_orders = mysqli_query($conn, "SELECT * FROM `order`") or die('query failed');
+        $select_orders = mysqli_query($conn, "SELECT * FROM `ordertable`") or die('query failed');
         if (mysqli_num_rows($select_orders) > 0) {
             while ($fetch_orders = mysqli_fetch_assoc($select_orders)) {
                 ?>
