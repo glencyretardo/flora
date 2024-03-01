@@ -2,7 +2,7 @@
 
 
 session_start();
-
+require_once  'database.php';
 
 
 if(isset($_POST['update_product'])){
@@ -12,7 +12,7 @@ if(isset($_POST['update_product'])){
    $Price = mysqli_real_escape_string($conn, $_POST['Price']);
    $details = mysqli_real_escape_string($conn, $_POST['details']);
 
-   mysqli_query($conn, "UPDATE `product` SET name = '$ProductName', details = '$details', Price = '$Price' WHERE id = '$update_p_id'") or die('query failed');
+   mysqli_query($conn, "UPDATE `product` SET ProductName = '$ProductName', Description = '$details', Price = '$Price' WHERE ProductID= '$update_p_id'") or die('query failed');
 
    $image = $_FILES['image']['name'];
    $image_size = $_FILES['image']['size'];
@@ -24,7 +24,7 @@ if(isset($_POST['update_product'])){
       if($image_size > 2000000){
          $message[] = 'image file size is too large!';
       }else{
-         mysqli_query($conn, "UPDATE `products` SET image = '$image' WHERE id = '$update_p_id'") or die('query failed');
+         mysqli_query($conn, "UPDATE `product` SET image = '$image' WHERE ProductID = '$update_p_id'") or die('query failed');
          move_uploaded_file($image_tmp_name, $image_folter);
          unlink('uploaded_img/'.$old_image);
          $message[] = 'image updated successfully!';
@@ -59,9 +59,10 @@ if(isset($_POST['update_product'])){
 <section class="update-product">
 
 <?php
-
+// Modify this part of the code
+if(isset($_GET['update'])){
    $update_id = $_GET['update'];
-   $select_product = mysqli_query($conn, "SELECT * FROM `product` WHERE id = '$update_id'") or die('query failed');
+   $select_product = mysqli_query($conn, "SELECT * FROM `product` WHERE ProductID = '$update_id'") or die('query failed');
    if(mysqli_num_rows($select_product) > 0){
       while($fetch_product = mysqli_fetch_assoc($select_product)){
 ?>
@@ -80,9 +81,12 @@ if(isset($_POST['update_product'])){
 
 <?php
       }
-   }else{
-      echo '<p class="empty">no update product select</p>';
+   } else {
+      echo '<p class="empty">no update product selected</p>';
    }
+} else {
+   echo '<p class="empty">no update product selected</p>';
+}
 ?>
 
 </section>
