@@ -18,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         // Phone number validation
         $number = preg_replace('/[^0-9]/', '', $number); // Remove non-numeric characters
-        if (strlen($number) !== 12) {
-            $error_message = 'Phone number must be exactly 12 digits';
+        if (strlen($number) !== 11) {
+            $error_message = 'Phone number must be exactly 11 digits';
         } else {
             // Using prepared statements to prevent SQL injection
             $insert_query = "INSERT INTO message (Name, Email, ContactNumber, MessageContent) VALUES (?, ?, ?, ?)";
@@ -65,8 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         // Phone number validation
         $number = preg_replace('/[^0-9]/', '', $number); // Remove non-numeric characters
-        if (strlen($number) !== 12) {
-            $error_message = 'Phone number must be exactly 12 digits';
+        if (strlen($number) !== 11) {
+            $error_message = 'Phone number must be exactly 11 digits';
         } else {
             // Using prepared statements to prevent SQL injection
             $insert_query = "INSERT INTO message (Name, Email, ContactNumber, MessageContent) VALUES (?, ?, ?, ?)";
@@ -131,7 +131,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php include 'footer.php'; ?>
 
-<script src="js/script.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var contactForm = document.getElementById('contactForm');
@@ -187,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Function to validate the phone number
         function validatePhoneNumber(phoneNumber) {
-            return phoneNumber.length === 12 ? '' : 'Phone number must be exactly 12 digits';
+            return phoneNumber.length === 11 ? '' : 'Phone number must be exactly 11 digits';
         }
     });
 </script>
