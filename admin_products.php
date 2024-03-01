@@ -90,13 +90,8 @@ if(isset($_GET['delete'])){
       <div class="box">
          <div class="price">₱<?php echo number_format($fetch_product['Price'], 2); ?> </div>
 
-         <img class="image" src="/full/path/to/your/project/uploaded_img/<?php echo $fetch_product['image']; ?>" alt="">
+         <img class="image" src="uploaded_img/<?php echo $fetch_product['image']; ?>" alt="">
 
-         <?php
-            // Corrected the variable name to $fetch_product['image']
-            $imagePath = 'uploaded_img/' . $fetch_product['image'];
-            echo "Image Path: $imagePath";
-         ?>
          <div class="name"><?php echo $fetch_product['ProductName']; ?></div>
          <div class="details"><?php echo $fetch_product['Description']; ?></div>
          <a href="admin_update_product.php?update=<?php echo $fetch_product['ProductID']; ?>" class="option-btn">update</a>
