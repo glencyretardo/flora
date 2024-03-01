@@ -55,10 +55,6 @@ if (isset($_POST['update_quantity'])) {
     <p> <a href="home.php">home</a> / cart </p>
 </section>
 
-<section class="heading">
-    <h3>shopping cart</h3>
-    <p> <a href="home.php">home</a> / cart </p>
-</section>
 
 <section class="shopping-cart">
 
@@ -78,11 +74,12 @@ if (isset($_POST['update_quantity'])) {
                     <img src="uploaded_img/<?php echo $fetch_cart['Image']; ?>" alt="" class="image">
                     <div class="name"><?php echo $fetch_cart['ProductName']; ?></div>
                     <div class="price">$<?php echo $fetch_cart['Price']; ?>/-</div>
-                    <form action="" method="post">
-                        <input type="hidden" value="<?php echo $fetch_cart['CartID']; ?>" name="cart_id">
-                        <input type="number" min="1" value="<?php echo $fetch_cart['Quantity']; ?>" name="cart_quantity" class="qty">
-                        <input type="submit" value="update" class="option-btn" name="update_quantity">
-                    </form>
+                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <input type="hidden" value="<?php echo $fetch_cart['CartID']; ?>" name="cart_id">
+    <input type="number" min="1" value="<?php echo $fetch_cart['Quantity']; ?>" name="cart_quantity" class="qty">
+    <input type="submit" value="update" class="option-btn" name="update_quantity">
+</form>
+
                     <div class="sub-total"> sub-total : <span>$<?php echo $sub_total = ($fetch_cart['Price'] * $fetch_cart['Quantity']); ?>/-</span> </div>
                 </div>
                 <?php
