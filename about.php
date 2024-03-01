@@ -98,7 +98,7 @@ session_start();
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star"></i>
             </div>
             <h3>n/a</h3>
         </div>
@@ -124,7 +124,6 @@ session_start();
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
             </div>
             <h3>n/a</h3>
         </div>
@@ -150,7 +149,7 @@ session_start();
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star"></i>
             </div>
             <h3>n/a</h3>
         </div>
