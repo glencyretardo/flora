@@ -1,5 +1,5 @@
 <?php
-
+require_once  'database.php';
 session_start();
 
 $user_id = $_SESSION['user_id'];
@@ -60,7 +60,7 @@ if(isset($_POST['update_quantity'])){
 
     <?php
         $grand_total = 0;
-        $select_cart = mysqli_query($conn, "SELECT * FROM `cart` WHERE UserID = '$UserID'") or die('query failed');
+        $select_cart = mysqli_query($conn, "SELECT * FROM `cart` WHERE UserID = '$user_id'") or die('query failed');
         if(mysqli_num_rows($select_cart) > 0){
             while($fetch_cart = mysqli_fetch_assoc($select_cart)){
     ?>
