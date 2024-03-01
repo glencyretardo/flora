@@ -11,17 +11,28 @@ function logout() {
 ?>
 
 <?php
-if(isset($message)){
-   foreach($message as $message){
-      echo '
-      <div class="message">
-         <span>'.$message.'</span>
-         <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-      </div>
-      ';
-   }
+if (isset($message)) {
+    if (is_array($message) || is_object($message)) {
+        foreach ($message as $msg) {
+            echo '
+            <div class="message">
+               <span>' . $msg . '</span>
+               <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+            </div>
+            ';
+        }
+    } else {
+        // $message is a string, not an array
+        echo '
+        <div class="message">
+           <span>' . $message . '</span>
+           <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+        </div>
+        ';
+    }
 }
 ?>
+
 
 <header class="header">
 

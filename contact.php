@@ -1,9 +1,35 @@
 <?php
-
-
 session_start();
+require_once 'database.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve form data
+    $name = isset($_POST['name']) ? $_POST['name'] : '';
+    $email = isset($_POST['email']) ? $_POST['email'] : '';
+    $number = isset($_POST['number']) ? $_POST['number'] : '';
+    $message = isset($_POST['message']) ? $_POST['message'] : '';
 
+    // Using prepared statements to prevent SQL injection
+    $insert_query = "INSERT INTO message (Name, Email, ContactNumber, MessageContent) VALUES (?, ?, ?, ?)";
+
+    // Prepare the statement
+    $stmt = mysqli_prepare($conn, $insert_query);
+
+    // Bind parameters to the statement
+    mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $number, $message);
+
+    // Execute the statement
+    $result = mysqli_stmt_execute($stmt);
+
+    if ($result) {
+        echo "Data inserted successfully!";
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+
+    // Close the statement
+    mysqli_stmt_close($stmt);
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +41,6 @@ session_start();
    <title>contact</title>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
    <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
    
@@ -27,26 +52,18 @@ session_start();
 </section>
 
 <section class="contact">
-
     <form action="" method="POST">
-        <h3>send us message!</h3>
+        <h3>send us a message!</h3>
         <input type="text" name="name" placeholder="enter your name" class="box" required> 
         <input type="email" name="email" placeholder="enter your email" class="box" required>
         <input type="number" name="number" placeholder="enter your number" class="box" required>
         <textarea name="message" class="box" placeholder="enter your message" required cols="30" rows="10"></textarea>
         <input type="submit" value="send message" name="send" class="btn">
     </form>
-
 </section>
-
-
-
-
-
 
 <?php include 'footer.php'; ?>
 
 <script src="js/script.js"></script>
-
 </body>
 </html>

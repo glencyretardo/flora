@@ -77,14 +77,15 @@ require_once  'database.php';
       </div>
 
       <div class="box">
-      <?php
-            $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE name = 'name' ") or die('query failed');
-            $number_of_users = mysqli_num_rows($select_users);
-         ?>
-         <h3><?php echo $number_of_users; ?></h3>
-         <!-- gawas pila ka users naa -->
-         <p>users</p>
-      </div>
+    <?php
+        $select_users = mysqli_query($conn, "SELECT * FROM `users`") or die('query failed');
+        $number_of_users = mysqli_num_rows($select_users);
+    ?>
+    <h3><?php echo $number_of_users; ?></h3>
+    <!-- Display the count of users -->
+    <p>users</p>
+</div>
+
 
 
       <div class="box">

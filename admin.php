@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
    
 
     // Prepare and execute the query to fetch user data based on email
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT * FROM adminregistration WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
             // Password matches, set session variables
             $_SESSION['user_name'] = $row['name'];
             $_SESSION['user_id'] = uniqid(); // You can generate a unique user id here
-            header('location: home.php'); // Redirect to home page after successful login
+            header('location: admin_dashboard.php'); // Redirect to home page after successful login
             exit();
         } else {
             $message[] = 'Incorrect email or password!';
