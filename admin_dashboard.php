@@ -41,7 +41,7 @@ require_once  'database.php';
                $total_pendings += $fetch_pendings['total_price'];
             };
          ?>
-         <h3>₱<?php echo $total_pendings; ?>/-</h3>
+         <h3>₱<?php echo $total_pendings; ?></h3>
          <p>total pendings</p>
       </div>
 
