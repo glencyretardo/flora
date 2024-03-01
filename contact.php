@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <?php
-session_start();
+
 require_once 'database.php';
 
 $success_message = ''; // Variable to store success message
