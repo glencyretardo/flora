@@ -1,4 +1,5 @@
 <?php
+
 if(isset($message)){
    foreach($message as $message){
       echo '
@@ -31,11 +32,11 @@ if(isset($message)){
       </div>
 
       <div class="account-box">
-         <p>username : <span><?php echo $_SESSION['admin_name']; ?></span></p>
-         <p>email : <span><?php echo $_SESSION['admin_email']; ?></span></p>
-         <a href="logout.php" class="delete-btn">logout</a>
-         <div>new <a href="login.php">login</a> | <a href="register.php">register</a> </div>
-      </div>
+            <p>username : <span><?php echo isset($_SESSION['admin_name']) ? $_SESSION['admin_name'] : ''; ?></span></p>
+            <p>email : <span><?php echo isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''; ?></span></p>
+            <a href="logout.php" class="delete-btn">logout</a>
+            <div>new <a href="admin.php">login</a> | <a href="adminregister.php">register</a> </div>
+        </div>
 
    </div>
 
