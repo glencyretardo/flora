@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
    session_start();
 }
-//var_dump($_SESSION);
+
 if (isset($message)) {
     foreach ($message as $message) {
         echo '
@@ -25,7 +25,6 @@ if (isset($_GET['admin_logout'])) {
    header("Location: admin.php");
    exit();
 }
-?>
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +54,7 @@ if (isset($_GET['admin_logout'])) {
         </div>
         <div class="account-box" id="account-box">
             <?php if (isset($_SESSION['admin_name'])) { ?>
-                <p>username: <span><?php echo $_SESSION['admin_name']; ?></span></p>
+                <p> admin : <span><?php echo $_SESSION['admin_name']; ?></span></p>
                 <a href="?admin_logout" class="delete-btn">logout</a>
                 <?php } else { ?>
                 <div> | <a href="admin.php">logout</a></div>

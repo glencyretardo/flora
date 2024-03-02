@@ -8,9 +8,8 @@ if (isset($_SESSION['user_id'])) {
 } else {
     // Handle the case where the user is not logged in
     // Redirect to a login page or handle it as per your application logic
-    header('Location: login.php');
-    exit();
-}
+  //  header('Location: login.php');
+
 
 if (isset($_POST['add_to_wishlist'])) {
     $product_id = $_POST['product_id']; // Adjust this based on your form field name
@@ -59,6 +58,7 @@ if (isset($_POST['add_to_cart'])) {
 
 }
 
+}
 ?>
 
 <!DOCTYPE html>
