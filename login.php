@@ -1,14 +1,12 @@
 <?php
-
 session_start();
+require_once 'database.php';
 
-require_once  'database.php';
+$message = [];
 
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['pass'];
-
-   
 
     // Prepare and execute the query to fetch user data based on email
     $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
@@ -19,13 +17,19 @@ if (isset($_POST['submit'])) {
     if ($result->num_rows == 1) {
         // User found, fetch user data
         $row = $result->fetch_assoc();
-    
+
         // Verify password
         if (password_verify($password, $row['password_hash'])) {
             // Password matches, set session variables
             $_SESSION['user_name'] = $row['name'];
             $_SESSION['user_id'] = $row['user_id']; // Assuming the user ID is stored in the database
-            header('location: home.php'); // Redirect to home page after successful login
+
+            // Additional debugging
+            echo "User ID during login: " . $_SESSION['user_id'] . "<br>";
+            echo "User ID from database: " . $row['user_id'] . "<br>";
+
+            // Redirect to home page after successful login
+            header('location: home.php');
             exit();
         } else {
             $message[] = 'Incorrect email or password!';
@@ -33,14 +37,11 @@ if (isset($_POST['submit'])) {
     } else {
         $message[] = 'Incorrect email or password!';
     }
-    
 
     // Close database connection
     $stmt->close();
     $conn->close();
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +55,6 @@ if (isset($_POST['submit'])) {
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -73,7 +73,6 @@ if (isset($_POST['submit'])) {
     ?>
 
     <section class="form-container">
-
         <form action="" method="post">
             <h3>Login now</h3>
             <input type="email" name="email" class="box" placeholder="Enter your email" required
@@ -81,11 +80,8 @@ if (isset($_POST['submit'])) {
             <input type="password" name="pass" class="box" placeholder="Enter your password" required>
             <input type="submit" class="btn" name="submit" value="Login now">
             <p>Don't have an account? <a href="register.php">Register now</a></p>
-            <p> <a href="forgotpassword.php"> forgot password?  </a></p>
-
-
+            <p> <a href="forgotpassword.php"> forgot password? </a></p>
         </form>
-
     </section>
 
 </body>
