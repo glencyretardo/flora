@@ -68,13 +68,16 @@ require_once  'database.php';
       </div>
 
       <div class="box">
-        <!-- gawas diri dapat pila ka products naa add -->
-        <?php
-            $select_products = mysqli_query($conn, "SELECT * FROM `product`") or die('query failed');
-            $number_of_products = mysqli_num_rows($select_products);
-         ?>
-         <p>products added</p>
-      </div>
+    <!-- gawas diri dapat pila ka products naa add -->
+    <?php
+        $select_products = mysqli_query($conn, "SELECT * FROM `product`") or die('query failed');
+        $number_of_products = mysqli_num_rows($select_products);
+    ?>
+    <h3><?php echo $number_of_products; ?></h3>
+    <!-- Display the count of products -->
+    <p>products added</p>
+</div>
+
 
       <div class="box">
     <?php
