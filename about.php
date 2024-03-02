@@ -30,7 +30,7 @@ session_start();
     <div class="flex">
 
         <div class="image">
-            <img src="images/about-img-1.png" alt="">
+            <img src="images/img1.jpg" alt="">
         </div>
 
         <div class="content">
@@ -50,7 +50,7 @@ session_start();
         </div>
 
         <div class="image">
-            <img src="images/about-img-2.jpg" alt="">
+            <img src="images/yo.png" alt="">
         </div>
 
     </div>
@@ -58,7 +58,7 @@ session_start();
     <div class="flex">
 
         <div class="image">
-            <img src="images/about-img-3.jpg" alt="">
+            <img src="images/img3.jpg" alt="">
         </div>
 
         <div class="content">
