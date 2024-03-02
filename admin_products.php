@@ -42,6 +42,7 @@ if(isset($_GET['delete'])){
    $select_delete_image = mysqli_query($conn, "SELECT image FROM `product` WHERE ProductID = '$delete_id'") or die('query failed');
    $fetch_delete_image = mysqli_fetch_assoc($select_delete_image);
    unlink('uploaded_img/'.$fetch_delete_image['image']);
+   mysqli_query($conn, "DELETE FROM `cart` WHERE ProductID = '$delete_id'") or die('query failed');
    mysqli_query($conn, "DELETE FROM `product` WHERE ProductID = '$delete_id'") or die('query failed');
    mysqli_query($conn, "DELETE FROM `wishlist` WHERE wishlistID= '$delete_id'") or die('query failed');
    mysqli_query($conn, "DELETE FROM `cart` WHERE cartID= '$delete_id'") or die('query failed');
