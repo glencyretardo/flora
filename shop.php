@@ -20,8 +20,7 @@ if (isset($_POST['add_to_wishlist'])) {
         $message[] = 'already added to cart';
     } else {
         // Insert only UserID, ProductID, and DateAdded into the wishlist
-        $insert_query = "INSERT INTO `wishlist` (UserID, ProductID, DateAdded) VALUES ('$user_id', '$product_id', NOW())";
-        mysqli_query($conn, $insert_query) or die(mysqli_error($conn));
+        mysqli_query($conn, "INSERT INTO `wishlist` (UserID, ProductID, DateAdded) VALUES ('$user_id', '$product_id', NOW())") or die(mysqli_error($conn));
         $message[] = 'product added to wishlist';
     }
 }
