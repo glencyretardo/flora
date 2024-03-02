@@ -639,7 +639,6 @@ section{
    margin-top: 1rem;
 }
 
-
 .contact form{
    max-width: 50rem;
    background-color: var(--white);
@@ -672,6 +671,125 @@ section{
 .contact form textarea{
    height: 15rem;
    resize: none;
+}
+
+
+.display-order{
+   max-width: 1200px;
+   margin:0 auto;
+   text-align: center;
+   padding-bottom: 0;
+}
+
+.display-order p{
+   display: inline-block;
+   border-radius: .5rem;
+   font-size: 2rem;
+   color:var(--black);
+   padding:1rem 1.5rem;
+   margin:.5rem;
+   background-color: var(--white);
+   box-shadow: var(--box-shadow);
+   border:var(--border);
+}
+
+.display-order p span{
+   color:var(--red);
+
+}
+
+.display-order .grand-total{
+   margin-top: 2rem;
+   font-size: 2rem;
+   color:var(--light-color);
+}
+
+.display-order .grand-total span{
+   color:var(--red);
+}
+
+/* Checkout form container */
+.checkout-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+}
+
+/* Checkout form */
+.checkout form {
+   background-color: var(--white);
+   border: var(--border);
+   max-width: 1200px;
+   margin: 0 auto;
+   border-radius: .5rem;
+   padding: 2rem;
+   box-shadow: var(--border);
+   text-align: center; /* Center the form */
+}
+
+/* Checkout form headings */
+.checkout form h3 {
+   font-size: 2.5rem;
+   margin-bottom: 2rem;
+   background-color: var(--black);
+   color: var(--white);
+   border-radius: .5rem;
+   text-transform: capitalize;
+}
+
+/* Checkout form input containers */
+.checkout form .flex {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1.5rem;
+   justify-content: center; /* Center the input boxes */
+}
+
+/* Checkout form input boxes */
+.checkout form .flex .inputBox {
+   flex: 1 1 40rem;
+   text-align: left; /* Align text to left within input boxes */
+}
+
+
+/* Checkout form input labels */
+.checkout form .flex .inputBox span {
+   font-size: 2rem;
+   color: var(--light-color);
+}
+
+.checkout form .flex .inputBox input,
+.checkout form .flex .inputBox select {
+   margin: 1rem 0;
+   width: 100%;
+   background-color: var(--light-bg);
+   padding: 1.2rem 1.4rem;
+   border: var(--border);
+   font-size: 2.2rem; /* Increase input font size */
+   color: var(--black);
+   border-radius: .5rem;
+}
+
+
+.placed-orders .box-container .box{
+   background-color: var(--white);
+   padding:1rem 2rem;
+   border:var(--border);
+   box-shadow: var(--box-shadow);
+   flex:1 1 40rem;
+   border-radius: .5rem;
+}
+
+.placed-orders .box-container .box p{
+   margin: 1rem 0;
+   font-size: 2rem;
+   line-height: 1.5;
+   color:var(--light-color);
+}
+
+.placed-orders .box-container .box p span{
+   color:var(--pink);
 }
 
 
@@ -737,8 +855,6 @@ section{
 .footer .credit span{
    color:var(--pink);
 }
-
-
 
 
 

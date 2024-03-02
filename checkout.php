@@ -55,15 +55,12 @@ if (isset($_POST['order'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
-
     <!-- Font Awesome CDN link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <!-- Custom admin CSS file link -->
     <link rel="stylesheet" href="style.css">
 
 </head>
-
 <body>
 
     <?php include 'header.php'; ?>
@@ -83,14 +80,14 @@ if (isset($_POST['order'])) {
                     $total_price = ($fetch_cart['Price'] * $fetch_cart['Quantity']);
                     $grand_total += $total_price;
             ?>
-                    <p><?php echo $fetch_cart['ProductName'] ?> <span>(<?php echo '$' . $fetch_cart['Price'] . '/-' . ' x ' . $fetch_cart['Quantity'] ?>)</span> </p>
+                    <p><?php echo $fetch_cart['ProductName'] ?> <span><?php echo '₱' . $fetch_cart['Price'] . ' x ' . $fetch_cart['Quantity'] ?></span> </p>
             <?php
                 }
             } else {
                 echo '<p class="empty">Your cart is empty</p>';
             }
             ?>
-            <div class="grand-total">Grand Total: <span>$<?php echo $grand_total; ?>/-</span></div>
+            <div class="grand-total">Grand Total: <span>₱<?php echo $grand_total; ?></span></div>
         </section>
     </div>
 </section>
