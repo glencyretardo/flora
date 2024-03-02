@@ -9,57 +9,58 @@ if (isset($_SESSION['user_id'])) {
     // Handle the case where the user is not logged in
     // Redirect to a login page or handle it as per your application logic
   //  header('Location: login.php');
-
-
-if (isset($_POST['add_to_wishlist'])) {
-    $product_id = $_POST['product_id']; // Adjust this based on your form field name
-    $product_name = $_POST['product_name'];
-    $product_price = $_POST['product_price'];
-    $product_image = $_POST['product_image'];
-
-    // Use the correct column names in the SQL query
-    $check_wishlist_numbers = mysqli_query($conn, "SELECT * FROM `wishlist` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
-    $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
-
-    if(mysqli_num_rows($check_wishlist_numbers) > 0){
-        $message[] = 'already added to wishlist';
-    }elseif(mysqli_num_rows($check_cart_numbers) > 0){
-        $message[] = 'already added to cart';
-    }else{
-        mysqli_query($conn, "INSERT INTO `wishlist`(UserID, ProductID, Name, Price, image, DateAdded) VALUES('$user_id', '$product_id', '$product_name', '$product_price', '$product_image', NOW())") or die('query failed');
-        $message[] = 'product added to wishlist';
-   }
-
 }
+  $message = [];
 
-if (isset($_POST['add_to_cart'])) {
-    $product_id = $_POST['product_id']; // Adjust this based on your form field name
-    $product_name = $_POST['product_name'];
-    $product_price = $_POST['product_price'];
-    $product_image = $_POST['product_image'];
-    $product_quantity = $_POST['product_quantity'];
-
-    // Use the correct column names in the SQL query
-    $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
-
-    if(mysqli_num_rows($check_cart_numbers) > 0){
-        $message[] = 'already added to cart';
-    }else{
-
-        $check_wishlist_numbers = mysqli_query($conn, "SELECT * FROM `wishlist` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
-
-        if(mysqli_num_rows($check_wishlist_numbers) > 0){
-            mysqli_query($conn, "DELETE FROM `wishlist` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
-        }
-
-        mysqli_query($conn, "INSERT INTO `cart`(UserID, ProductID, Name, Price, Quantity, image, DateAdded) VALUES('$user_id', '$product_id', '$product_name', '$product_price', '$product_quantity', '$product_image', NOW())") or die('query failed');
-        $message[] = 'product added to cart';
-    }
-
-}
-
-}
-?>
+  if (isset($_POST['add_to_wishlist'])) {
+      $product_id = $_POST['product_id'];
+      $user_id = $_SESSION['user_id'];
+  
+      // Check if the product is already in the wishlist or cart
+      $check_wishlist_numbers = mysqli_query($conn, "SELECT * FROM `wishlist` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
+      $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
+  
+      if (mysqli_num_rows($check_wishlist_numbers) > 0) {
+          $message[] = 'already added to wishlist';
+      } elseif (mysqli_num_rows($check_cart_numbers) > 0) {
+          $message[] = 'already added to cart';
+      } else {
+          // Insert only UserID, ProductID, and DateAdded into the wishlist
+          mysqli_query($conn, "INSERT INTO `wishlist` (UserID, ProductID, DateAdded) VALUES ('$user_id', '$product_id', NOW())") or die(mysqli_error($conn));
+          $message[] = 'product added to wishlist';
+      }
+  }
+  
+  
+  if (isset($_POST['add_to_cart'])) {
+      $product_id = $_POST['product_id'];
+      $product_name = $_POST['product_name'];
+      $product_price = $_POST['product_price'];
+      $product_image = $_POST['product_image'];
+      $product_quantity = $_POST['product_quantity'];
+      $user_id = $_SESSION['user_id']; // Assuming you have stored the user ID in the session.
+  
+      // Check if the product is already in the cart
+      $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
+  
+      if (mysqli_num_rows($check_cart_numbers) > 0) {
+          $message[] = 'already added to cart';
+      } else {
+          // Check if the product is in the wishlist and remove it
+          $check_wishlist_numbers = mysqli_query($conn, "SELECT * FROM `wishlist` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
+  
+          if (mysqli_num_rows($check_wishlist_numbers) > 0) {
+              mysqli_query($conn, "DELETE FROM `wishlist` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
+          }
+  
+          // Add the product to the cart
+          $sql = "INSERT INTO `cart` (UserID, ProductID, Quantity, DateAdded) VALUES ('$user_id', '$product_id', '$product_quantity', NOW())";
+          mysqli_query($conn, $sql) or die(mysqli_error($conn));
+          $message[] = 'product added to cart';
+      }
+  }
+  ?>
+  
 
 <!DOCTYPE html>
 <html lang="en">

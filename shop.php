@@ -3,7 +3,7 @@ include 'database.php';
 
 session_start();
 
-// Initialize the message array
+// Initialize the messages array
 $message = [];
 
 if (isset($_POST['add_to_wishlist'])) {
@@ -20,10 +20,11 @@ if (isset($_POST['add_to_wishlist'])) {
         $message[] = 'already added to cart';
     } else {
         // Insert only UserID, ProductID, and DateAdded into the wishlist
-        mysqli_query($conn, "INSERT INTO `wishlist`(UserID, ProductID, DateAdded) VALUES('$user_id', '$product_id', NOW())") or die('query failed');
+        mysqli_query($conn, "INSERT INTO `wishlist` (UserID, ProductID, DateAdded) VALUES ('$user_id', '$product_id', NOW())") or die(mysqli_error($conn));
         $message[] = 'product added to wishlist';
     }
 }
+
 
 if (isset($_POST['add_to_cart'])) {
     $product_id = $_POST['product_id'];
@@ -77,6 +78,8 @@ if (isset($_POST['add_to_cart'])) {
     <p><a href="home.php">home</a> / shop</p>
 </section>
 
+<!-- Display messages at the top -->
+
 <section class="products">
     <h1 class="title">latest products</h1>
     <div class="box-container">
@@ -97,13 +100,6 @@ if (isset($_POST['add_to_cart'])) {
                     <input type="hidden" name="product_image" value="<?php echo $fetch_products['image']; ?>">
                     <input type="submit" value="add to wishlist" name="add_to_wishlist" class="option-btn">
                     <input type="submit" value="add to cart" name="add_to_cart" class="btn">
-
-                    <!-- Display messages within the box -->
-                    <?php foreach ($message as $msg) : ?>
-                        <div class="box">
-                            <?php echo $msg; ?>
-                        </div>
-                    <?php endforeach; ?>
                 </form>
                 <?php
             }

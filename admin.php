@@ -83,7 +83,8 @@ if (isset($_POST['submit'])) {
                 value="<?php echo isset($_GET['email']) ? htmlspecialchars($_GET['email']) : ''; ?>">
             <input type="password" name="pass" class="box" placeholder="Enter your password" required>
             <input type="submit" class="btn" name="submit" value=" Admin Login">
-            <p> add new admin? <a href="adminregister.php">Register now</a></p>
+            <p> add new admin? <a href="adminregister.php"> Add now</a></p>
+            <p><a href="home.php"> Proceed to Flora Homepage  </a></p>
         </form>
 
     </section>
