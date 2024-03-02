@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
     $confirmPassword = password_hash($_POST['cpass'], PASSWORD_BCRYPT);
 
     // Check if user with the same email already exists in the database
-    $checkUserQuery = "SELECT * FROM users WHERE email = ?";
+    $checkUserQuery = "SELECT * FROM adminregistration WHERE email = ?";
     $stmt = $conn->prepare($checkUserQuery);
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -23,9 +23,9 @@ if (isset($_POST['submit'])) {
             $message[] = 'Confirm password not matched!';
         } else {
             // Insert user into the database
-            $insertUserQuery = "INSERT INTO adminregistration (name, email, password_hash) VALUES (?, ?, ?)";
+            $insertUserQuery = "INSERT INTO adminregistration (username, email, password_hash) VALUES (?, ?, ?)";
             $stmt = $conn->prepare($insertUserQuery);
-            $stmt->bind_param("sss", $name, $email, $password);
+            $stmt->bind_param('sss',$name, $email, $password);
             $stmt->execute();
 
             $message[] = 'Registered successfully!';

@@ -173,7 +173,7 @@ section{
    animation: fadeIn .2s linear;
 }
 
-.header .flex .account-box.active{
+.header .flex .account-box.visible{
    display: inline-block;
 }
 

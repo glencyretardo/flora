@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+//var_dump($_SESSION);
 require_once  'database.php';
 
 if (isset($_POST['submit'])) {
@@ -23,9 +23,10 @@ if (isset($_POST['submit'])) {
         // Verify password
         if (password_verify($password, $row['password_hash'])) {
             // Password matches, set session variables
-            $_SESSION['user_name'] = $row['name'];
-            $_SESSION['user_email'] = $row['email'];
-            $_SESSION['user_id'] = uniqid(); // You can generate a unique user id here
+            $_SESSION['admin_name'] = $row['username'];
+            $_SESSION['admin_email'] = $row['email'];
+            $_SESSION['admin_id'] = uniqid();
+             // You can generate a unique user id here
             header('location: admin_dashboard.php'); // Redirect to home page after successful login
             exit();
         } else {
