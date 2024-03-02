@@ -1,11 +1,14 @@
 <?php
+
+
 function isUserLoggedIn() {
     return isset($_SESSION['user_id']);
 }
+
 function logout() {
     session_unset();
     session_destroy();
-    header('location: login.php');
+    header('Location: login.php');
     exit();
 }
 ?>
