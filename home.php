@@ -75,6 +75,7 @@ if (isset($_SESSION['user_id'])) {
 
     <!-- custom admin css file link  -->
     <link rel="stylesheet" href="style.css">
+    
 
 </head>
 <body>
@@ -82,7 +83,7 @@ if (isset($_SESSION['user_id'])) {
 <?php include 'header.php'; ?>
 
 <section class="home">
-
+    <img src="images/basketflowers.jpg" alt="Basket Flowers" class="background-image">
     <div class="content">
        <h3>new collections</h3>
        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime reiciendis, modi placeat sit cumque molestiae.</p>
