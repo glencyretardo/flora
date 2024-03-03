@@ -12,10 +12,9 @@ if(isset($_POST['add_to_wishlist'])){
     $product_price = $_POST['product_price'];
     $product_image = $_POST['product_image'];
 
-    $check_wishlist_numbers = mysqli_query($conn, "SELECT * FROM `wishlist` WHERE ProductName = '$product_name' AND UserID = '$user_id'") or die('query failed');
+    $check_wishlist_numbers = mysqli_query($conn, "SELECT * FROM `wishlist` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
+    $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
 
-    $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE ProductName = '$product_name' AND UserID = '$user_id'") or die('query failed');
-    
     if(mysqli_num_rows($check_wishlist_numbers) > 0){
         $message[] = 'already added to wishlist';
     }elseif(mysqli_num_rows($check_cart_numbers) > 0){
@@ -35,15 +34,14 @@ if(isset($_POST['add_to_cart'])){
     $product_image = $_POST['product_image'];
     $product_quantity = $_POST['product_quantity'];
 
-    $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE ProductName = '$product_name' AND UserID = '$user_id'") or die('query failed');
+    $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
 
     if(mysqli_num_rows($check_cart_numbers) > 0){
         $message[] = 'already added to cart';
     }else{
 
-        $check_wishlist_numbers = mysqli_query($conn, "SELECT * FROM `wishlist` WHERE ProductName = '$product_name' AND UserID = '$user_id'") or die('query failed');
-
-        if(mysqli_num_rows($check_wishlist_numbers) > 0){
+        $check_wishlist_numbers = mysqli_query($conn, "SELECT * FROM `wishlist` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
+            if(mysqli_num_rows($check_wishlist_numbers) > 0){
             mysqli_query($conn, "DELETE FROM `wishlist` WHERE ProductName = '$product_name' AND UserID = '$user_id'") or die('query failed');
         }
 

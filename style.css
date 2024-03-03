@@ -360,7 +360,7 @@ section{
    right: 0;
    bottom: 0;
    left: 0;
-   background: url(../images/basketflowers.jpg) no-repeat;
+   background: url('C:/xampp/htdocs/flora/images/basketflowers.jpg') no-repeat;
    background-size: cover;
    background-position: center;
    filter: blur(2px);
@@ -401,7 +401,7 @@ section{
 .products .box-container .box{
    background-color: var(--white);
    border:var(--border);
-   box-shadow: var(--box-shadow);
+   box-shadow: var(--box-s9hadow);
    border-radius: .5rem;
    padding:2rem;
    text-align: center;
@@ -674,6 +674,117 @@ section{
 }
 
 
+.cart .box-container{
+   max-width: 1200px;
+   margin:0 auto;
+   display: grid;
+   grid-template-columns: repeat(auto-fit, 33rem);
+   gap:1.5rem;
+   align-items: flex-start;
+   justify-content: center;
+}
+
+.cart .box-container .box{
+   padding:2rem;
+   text-align: center;
+   background-color: var(--white);
+   border:var(--border);
+   box-shadow: var(--box-shadow);
+   border-radius: .5rem;
+   position: relative;
+}
+
+.cart .box-container .box .image{
+   height: 35rem;
+   width: 100%;
+   object-fit: cover;
+}
+
+.cart .box-container .box .fa-eye,
+.cart .box-container .box .fa-times{
+   position: absolute;
+   top:1rem;
+   height: 4.5rem;
+   width: 4.5rem;
+   line-height: 4.3rem;
+   font-size: 2rem;
+   border-radius: .5rem;
+}
+
+.cart .box-container .box .fa-eye{
+   right:1rem;
+   border:var(--border);
+   background-color: var(--white);
+   color:var(--black);
+}
+
+.cart .box-container .box .fa-eye:hover{
+   background-color: var(--black);
+   color:var(--white);
+}
+
+.cart .box-container .box .fa-times{
+   background-color: var(--red);
+   color:var(--white);
+}
+
+.cart .box-container .box .fa-times:hover{
+   background-color: var(--black);
+}
+
+.cart .box-container .box .name{
+   font-size: 2rem;
+   color:var(--black);
+   margin:1rem 0;
+}
+
+.cart .box-container .box .price{
+   font-size: 2.5rem;
+   color:var(--red);
+   margin:.5rem 0;
+}
+
+.cart .box-container .box .qty{
+   width: 9rem;
+   padding:1.2rem 1.4rem;
+   border-radius: .5rem;
+   border:var(--border);
+   font-size: 1.8rem;
+}
+
+.cart .box-container .box .sub-total{
+   margin-top: 1.5rem;
+   font-size: 2rem;
+   color:var(--light-color);
+}
+
+.cart .box-container .box .sub-total span{
+   color:var(--red);
+}
+
+.cart .cart-total{
+   max-width: 1200px;
+   margin:0 auto;
+   padding:2rem;
+   text-align: center;
+   background-color: var(--white);
+   border:var(--border);
+   box-shadow: var(--box-shadow);
+   border-radius: .5rem;
+   margin-top: 2rem;
+}
+
+.cart .cart-total p{
+   font-size: 2.5rem;
+   color:var(--light-color);
+   margin-bottom: 1rem;
+   
+}
+
+.cart .cart-total p span{
+   color:var(--red);
+}
+
 .display-order{
    max-width: 1200px;
    margin:0 auto;
@@ -781,6 +892,7 @@ section{
    border-radius: .5rem;
 }
 
+
 .placed-orders .box-container .box p{
    margin: 1rem 0;
    font-size: 2rem;
@@ -790,6 +902,28 @@ section{
 
 .placed-orders .box-container .box p span{
    color:var(--pink);
+}
+
+.search-form form{
+   max-width: 1200px;
+   margin:0 auto;
+   display: flex;
+   align-items: center;
+   gap:1rem;
+}
+
+.search-form form .box{
+   width: 100%;
+   border:var(--border);
+   background-color: var(--white);
+   box-shadow: var(--box-shadow);
+   padding:1.2rem 1.4rem;
+   font-size: 1.8rem;
+   border-radius: .5rem;
+}
+
+.search-form form .btn{
+   margin-top: 0;
 }
 
 
