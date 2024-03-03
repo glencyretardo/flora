@@ -2,7 +2,7 @@
 require_once 'database.php';
 session_start();
 
-$user_id = $_SESSION['user_id'];
+
 
 if (!isset($user_id)) {
     header('location:login.php');
@@ -39,10 +39,11 @@ if (isset($_POST['update_quantity'])) {
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>shopping cart</title>
 
+   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+   <!-- custom admin css file link  -->
    <link rel="stylesheet" href="style.css">
-
 
 </head>
 
@@ -54,7 +55,9 @@ if (isset($_POST['update_quantity'])) {
     <h3>shopping cart</h3>
     <p> <a href="home.php">home</a> / cart </p>
 </section>
-<section class="cart">
+
+
+<section class="shopping-cart">
 
     <h1 class="title">products added</h1>
 
@@ -95,7 +98,7 @@ if (isset($_POST['update_quantity'])) {
     </div>
 
     <div class="cart-total">
-        <p>grand total : <span>₱<?php echo $grand_total; ?></span></p>
+        <p>grand total : <span>$<?php echo $grand_total; ?>/-</span></p>
         <a href="shop.php" class="option-btn">continue shopping</a>
         <a href="checkout.php" class="btn  <?php echo ($grand_total > 1) ? '' : 'disabled' ?>">proceed to checkout</a>
     </div>

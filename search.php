@@ -4,8 +4,20 @@ include 'database.php';
 
 session_start();
 
+// Function to redirect to the login page
+function redirectToLogin() {
+    header("Location: login.php");
+    exit();
+}
 
-if(isset($_POST['add_to_wishlist'])){
+if (isset($_POST['add_to_wishlist'])) {
+    // Check if the user is logged in
+    if (!isset($_SESSION['user_id'])) {
+        // Redirect to the login page if not logged in
+        redirectToLogin();
+    }
+
+    $user_id = $_SESSION['user_id'];
 
     $product_id = $_POST['product_id'];
     $product_name = $_POST['product_name'];
@@ -13,20 +25,27 @@ if(isset($_POST['add_to_wishlist'])){
     $product_image = $_POST['product_image'];
 
     $check_wishlist_numbers = mysqli_query($conn, "SELECT * FROM `wishlist` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
-    $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
 
+    $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
+    
+    
     if(mysqli_num_rows($check_wishlist_numbers) > 0){
         $message[] = 'already added to wishlist';
-    }elseif(mysqli_num_rows($check_cart_numbers) > 0){
+    } elseif(mysqli_num_rows($check_cart_numbers) > 0){
         $message[] = 'already added to cart';
-    }else{
+    } else {
         mysqli_query($conn, "INSERT INTO `wishlist`(UserID, ProductID, ProductName, Price, image) VALUES('$user_id', '$product_id', '$product_name', '$product_price', '$product_image')") or die('query failed');
         $message[] = 'product added to wishlist';
     }
 
-}
+} elseif (isset($_POST['add_to_cart'])) {
+    // Check if the user is logged in
+    if (!isset($_SESSION['user_id'])) {
+        // Redirect to the login page if not logged in
+        redirectToLogin();
+    }
 
-if(isset($_POST['add_to_cart'])){
+    $user_id = $_SESSION['user_id'];
 
     $product_id = $_POST['product_id'];
     $product_name = $_POST['product_name'];
@@ -35,17 +54,20 @@ if(isset($_POST['add_to_cart'])){
     $product_quantity = $_POST['product_quantity'];
 
     $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
+    $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
 
     if(mysqli_num_rows($check_cart_numbers) > 0){
         $message[] = 'already added to cart';
-    }else{
+    } else {
 
         $check_wishlist_numbers = mysqli_query($conn, "SELECT * FROM `wishlist` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
-            if(mysqli_num_rows($check_wishlist_numbers) > 0){
-            mysqli_query($conn, "DELETE FROM `wishlist` WHERE ProductName = '$product_name' AND UserID = '$user_id'") or die('query failed');
+
+        if(mysqli_num_rows($check_wishlist_numbers) > 0){
+            mysqli_query($conn, "DELETE FROM `wishlist` WHERE ProductID = '$product_id' AND UserID = '$user_id'") or die('query failed');
+
         }
 
-        mysqli_query($conn, "INSERT INTO `cart`(UserID, ProductID, ProductName, Price, Quantity, image) VALUES('$user_id', '$product_id', '$product_name', '$product_price', '$product_quantity', '$product_image')") or die('query failed');
+        mysqli_query($conn, "INSERT INTO `cart`(UserID, ProductID, Quantity, DateAdded) VALUES('$user_id', '$product_id', '$product_quantity', NOW())") or die('query failed');
         $message[] = 'product added to cart';
     }
 
