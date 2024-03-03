@@ -26,18 +26,18 @@
 
         <div class="box">
             <h3>contact us</h3>
-            <p> <i class="fas fa-phone"></i> +123-456-7890 </p>
-            <p> <i class="fas fa-phone"></i> +111-222-3333 </p>
+            <p> <i class="fas fa-phone"></i> 0980-456-1390 </p>
+            <p> <i class="fas fa-phone"></i> 082-245-8745</p>
             <p> <i class="fas fa-envelope"></i> floraa@flowershop.com </p>
             <p> <i class="fas fa-map-marker-alt"></i> davao city, philippines </p>
         </div>
 
         <div class="box">
             <h3>follow us</h3>
-            <a href="#"><i class="fab fa-facebook-f"></i>facebook</a>
-            <a href="#"><i class="fab fa-twitter"></i>twitter</a>
-            <a href="#"><i class="fab fa-instagram"></i>instagram</a>
-            <a href="#"><i class="fab fa-linkedin"></i>linkedin</a>
+            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i>facebook</a>
+            <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i>twitter</a>
+            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i>instagram</a>
+            <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i>linkedin</a>
         </div>
 
     </div>
