@@ -83,7 +83,7 @@ if (isset($_SESSION['user_id'])) {
 <?php include 'header.php'; ?>
 
 <section class="home">
-    <img src="images/ehe.jpg" alt="Basket Flowers" class="background-image">
+    <img src="images/yeyu.png" alt="Basket Flowers" class="background-image">
     <div class="content">
        <h3>new collections</h3>
        <p>Welcome to Flora shop! Browse our new collections for you to check-out. These collections will make your loved ones heart flutter. </p>
