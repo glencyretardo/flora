@@ -23,11 +23,7 @@ if (isset($_POST['submit'])) {
             // Password matches, set session variables
             $_SESSION['user_name'] = $row['name'];
             $_SESSION['user_id'] = $row['user_id']; // Assuming the user ID is stored in the database
-
-            // Additional debugging
-            echo "User ID during login: " . $_SESSION['user_id'] . "<br>";
-            echo "User ID from database: " . $row['user_id'] . "<br>";
-
+            
             // Redirect to home page after successful login
             header('location: home.php');
             exit();
@@ -80,7 +76,7 @@ if (isset($_POST['submit'])) {
             <input type="password" name="pass" class="box" placeholder="Enter your password" required>
             <input type="submit" class="btn" name="submit" value="Login now">
             <p>Don't have an account? <a href="register.php">Register now</a></p>
-            <p> <a href="forgotpassword.php"> forgot password? </a></p>
+        
         </form>
     </section>
 

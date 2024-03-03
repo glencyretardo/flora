@@ -39,11 +39,10 @@ if (isset($_POST['update_quantity'])) {
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>shopping cart</title>
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-   <!-- custom admin css file link  -->
    <link rel="stylesheet" href="style.css">
+
 
 </head>
 
@@ -55,9 +54,7 @@ if (isset($_POST['update_quantity'])) {
     <h3>shopping cart</h3>
     <p> <a href="home.php">home</a> / cart </p>
 </section>
-
-
-<section class="shopping-cart">
+<section class="cart">
 
     <h1 class="title">products added</h1>
 
@@ -74,14 +71,14 @@ if (isset($_POST['update_quantity'])) {
                     <a href="view_page.php?pid=<?php echo $fetch_cart['ProductID']; ?>" class="fas fa-eye"></a>
                     <img src="uploaded_img/<?php echo $fetch_cart['Image']; ?>" alt="" class="image">
                     <div class="name"><?php echo $fetch_cart['ProductName']; ?></div>
-                    <div class="price">$<?php echo $fetch_cart['Price']; ?>/-</div>
+                    <div class="price">₱<?php echo $fetch_cart['Price']; ?></div>
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
     <input type="hidden" value="<?php echo $fetch_cart['CartID']; ?>" name="cart_id">
     <input type="number" min="1" value="<?php echo $fetch_cart['Quantity']; ?>" name="cart_quantity" class="qty">
     <input type="submit" value="update" class="option-btn" name="update_quantity">
 </form>
 
-                    <div class="sub-total"> sub-total : <span>$<?php echo $sub_total = ($fetch_cart['Price'] * $fetch_cart['Quantity']); ?>/-</span> </div>
+                    <div class="sub-total"> sub-total : <span>₱<?php echo $sub_total = ($fetch_cart['Price'] * $fetch_cart['Quantity']); ?></span> </div>
                 </div>
                 <?php
                 $grand_total += $sub_total;
@@ -98,7 +95,7 @@ if (isset($_POST['update_quantity'])) {
     </div>
 
     <div class="cart-total">
-        <p>grand total : <span>$<?php echo $grand_total; ?>/-</span></p>
+        <p>grand total : <span>₱<?php echo $grand_total; ?></span></p>
         <a href="shop.php" class="option-btn">continue shopping</a>
         <a href="checkout.php" class="btn  <?php echo ($grand_total > 1) ? '' : 'disabled' ?>">proceed to checkout</a>
     </div>
