@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 :root{
-   --pink:#d47465e2;
-   --red:#fe958ae7;
-   --orange:#bd875ece;
-   --black:#b99885;
+   --pink:#cfacacdb;
+   --red:#3d4522e7;
+   --orange:#cc9178e4;
+   --black:#988478;
    --white:#fff;
    --light-color:#666;
    --light-white:#ccc;
@@ -374,7 +374,7 @@ section{
 
 .home .content h3{
    text-transform: uppercase;
-   color:white;
+   color:rgb(155, 76, 76);
    text-shadow: 2px 2px 2px #1b080c; 
   
    font-size: 5.5rem;
@@ -385,7 +385,7 @@ section{
    margin:1rem auto;
    line-height:2;
    font-size: 1.7rem;
-   color:white;
+   color:rgb(171, 153, 153);
 }
 
 .products .box-container{
