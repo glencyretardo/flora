@@ -8,9 +8,9 @@ session_start();
 // Assuming $conn is your database connection, ensure it is established before using it.
 
 if(isset($_POST['add_product'])){
-   $name = mysqli_real_escape_string($conn, $_POST['name']);
-   $price = mysqli_real_escape_string($conn, $_POST['price']);
-   $details = mysqli_real_escape_string($conn, $_POST['details']);
+   $name = mysqli_real_escape_string($conn, $_POST['ProductName']);
+   $price = mysqli_real_escape_string($conn, $_POST['Price']);
+   $details = mysqli_real_escape_string($conn, $_POST['Description']);
    $image = $_FILES['image']['name'];
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];

@@ -312,12 +312,15 @@ section{
    max-width: 1200px;
    margin: 0 auto;
    justify-content: center;
+   
 }
 
-.show-products .box-container .box{
+.show-products .box-container .box {
+   width: 30rem; /* Set a fixed width */
+   height: 40rem; /* Set a fixed height */
    text-align: center;
-   padding:2rem;
-   border:var(--border);
+   padding: 2rem;
+   border: var(--border);
    background-color: var(--white);
    box-shadow: var(--box-shadow);
    border-radius: .5rem;
@@ -325,8 +328,12 @@ section{
 }
 
 .show-products .box-container .box .image{
-   height: 30rem;
+   width: 100%; /* Set a specific width */
+   height: 20rem; /* Set a specific height */
+   object-fit: cover; /* Maintain aspect ratio and cover the area */
    margin-bottom: .5rem;
+   border: var(--border); /* Add border if needed */
+   border-radius: .5rem; /* Add border-radius if needed */
 }
 
 .show-products .box-container .box .price{
