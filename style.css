@@ -373,8 +373,8 @@ section{
 
 .home .content h3 {
    text-transform: uppercase;
-   color:rgb(155, 76, 76);
-   text-shadow: 2px 2px 2px #1b080c; 
+   color:rgb(237, 207, 161);
+   text-shadow: 2px 2px 2px #3f0512; 
   
    font-size: 5.5rem;
 }
@@ -383,8 +383,10 @@ section{
    max-width: 60rem;
    margin: 1rem auto;
    line-height: 2;
-   font-size: 1.7rem;
-   color:rgb(171, 153, 153);
+   font-size: 1.8rem;
+   color:rgba(255, 255, 255, 0.957);
+   text-shadow: 2px 2px 2px #0c0c0c; 
+  
 }
 
 .products .box-container{
