@@ -142,19 +142,30 @@ if (isset($_SESSION['user_id'])) {
 </section>
 
 <script>
-  window.addEventListener('scroll', function() {
-    var header = document.querySelector('.header');
-    var homeSection = document.querySelector('.home');
-    var scrollPosition = window.scrollY;
-    var homeSectionHeight = homeSection.offsetHeight;
-    
-    if (scrollPosition <= homeSectionHeight) {
-      header.classList.add('transparent');
-    } else {
-      header.classList.remove('transparent');
-    }
-  });
-</script>
-<?php include 'footer.php'; ?>
+      // Function to update header transparency based on scroll position
+      function updateHeaderTransparency() {
+        var header = document.querySelector('.header');
+        var homeSection = document.querySelector('.home');
+        var scrollPosition = window.scrollY;
+        var homeSectionHeight = homeSection.offsetHeight;
+
+        if (scrollPosition <= homeSectionHeight) {
+          header.classList.add('transparent');
+        } else {
+          header.classList.remove('transparent');
+        }
+      }
+
+      // Event listener for scroll events
+      window.addEventListener('scroll', updateHeaderTransparency);
+
+      // Call the function on page load to set initial transparency
+      document.addEventListener('DOMContentLoaded', updateHeaderTransparency);
+    </script>
+
+    <!-- ... (rest of your head content) ... -->
+</head>
+<body>
+    <!-- ... (your existing body content) ... -->
 </body>
 </html>
