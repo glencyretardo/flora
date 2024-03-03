@@ -141,7 +141,20 @@ if (isset($_SESSION['user_id'])) {
 
 </section>
 
-<?php include 'footer.php'; ?>
+<script>
+  window.addEventListener('scroll', function() {
+    var header = document.querySelector('.header');
+    var homeSection = document.querySelector('.home');
+    var scrollPosition = window.scrollY;
+    var homeSectionHeight = homeSection.offsetHeight;
+    
+    if (scrollPosition <= homeSectionHeight) {
+      header.classList.add('transparent');
+    } else {
+      header.classList.remove('transparent');
+    }
+  });
+</script>
 
 </body>
 </html>

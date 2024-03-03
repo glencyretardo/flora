@@ -6,6 +6,8 @@ session_start();
 // Initialize the messages array
 $message = [];
 
+
+
 if (isset($_POST['add_to_wishlist'])) {
     $product_id = $_POST['product_id'];
     $user_id = $_SESSION['user_id'];
@@ -90,7 +92,7 @@ if (isset($_POST['add_to_cart'])) {
                 ?>
                 <form action="" method="POST" class="box">
                     <a href="view_page.php?pid=<?php echo $fetch_products['ProductID']; ?>" class="fas fa-eye"></a>
-                    <div class="price">$<?php echo $fetch_products['Price']; ?>/-</div>
+                    <div class="price">$<?php echo $fetch_products['Price']; ?></div>
                     <img src="uploaded_img/<?php echo $fetch_products['image']; ?>" alt="" class="image">
                     <div class="name"><?php echo $fetch_products['ProductName']; ?></div>
                     <input type="number" name="product_quantity" value="1" min="0" class="qty">
