@@ -351,41 +351,39 @@ section{
    display: flex;
    align-items: center;
    justify-content: center;
+   overflow: hidden; /* Prevents the image from overflowing */
 }
 
-.home::before {
-   content: "";
+.background-image {
    position: absolute;
    top: 0;
-   right: 0;
-   bottom: 0;
    left: 0;
-   background: url('C:/xampp/htdocs/flora/images/basketflowers.jpg') no-repeat;
-   background-size: cover;
-   background-position: center;
-   filter: blur(2px);
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
    z-index: -1;
+   filter: blur(2px);
 }
 
-
-.home .content{
+.home .content {
    text-align: center;
+   position: relative; /* Ensure content is on top of the image */
+   z-index: 1; /* Ensure content is on top of the image */
 }
 
-.home .content h3{
+.home .content h3 {
    text-transform: uppercase;
-   color:white;
-   text-shadow: 2px 2px 2px #1b080c; 
-  
+   color: white;
+   text-shadow: 2px 2px 2px #1b080c;
    font-size: 5.5rem;
 }
 
-.home .content p{
+.home .content p {
    max-width: 60rem;
-   margin:1rem auto;
-   line-height:2;
+   margin: 1rem auto;
+   line-height: 2;
    font-size: 1.7rem;
-   color:white;
+   color: white;
 }
 
 .products .box-container{
