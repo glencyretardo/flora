@@ -35,28 +35,27 @@ require_once 'database.php';
 
         <div class="box-container">
 
-            <div class="box">
+        <div class="box">
                 <?php
-                $total_pendings = 0;
-                $select_pendings = mysqli_query($conn, "SELECT * FROM `ordertable` WHERE payment_status = 'pending'") or die('query failed');
-                while ($fetch_pendings = mysqli_fetch_assoc($select_pendings)) {
-                    $total_pendings += $fetch_pendings['total_price'];
-                };
+                $select_pendings = mysqli_query($conn, "SELECT COUNT(*) AS total_pendings FROM `ordertable` WHERE payment_status = 'pending'") or die('query failed');
+                $fetch_pendings = mysqli_fetch_assoc($select_pendings);
+                $total_pendings = $fetch_pendings['total_pendings'];
                 ?>
-                <h3>₱<?php echo $total_pendings; ?></h3>
+                <h3><?php echo $total_pendings; ?></h3>
                 <p>total pendings</p>
             </div>
 
+
             <div class="box">
                 <?php
-                $total_completes = 0;
-                $select_completes = mysqli_query($conn, "SELECT * FROM `ordertable` WHERE payment_status = 'completed'") or die('query failed');
-                while ($fetch_completes = mysqli_fetch_assoc($select_completes)) {
-                    $total_completes += $fetch_completes['total_price'];
-                };
+                $select_completes = mysqli_query($conn, "SELECT COUNT(*) AS total_completes FROM `ordertable` WHERE payment_status = 'completed'") or die('query failed');
+                $fetch_completes = mysqli_fetch_assoc($select_completes);
+                $total_completes = $fetch_completes['total_completes'];
                 ?>
-                <p>completed payments</p>
+                <h3><?php echo $total_completes; ?></h3>
+                <p>completed orders</p>
             </div>
+
 
             <div class="box">
                 <?php
