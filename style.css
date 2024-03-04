@@ -400,6 +400,8 @@ section{
 }
 
 
+
+
 .products .box-container{
    max-width: 1200px;
    margin:0 auto;
@@ -1076,10 +1078,12 @@ section{
    }
 
    .home .content h3{
-      font-size: .5rem;
+      font-size: 4rem;
    }
 
 }
+
+
 
 @media (max-width:450px){
 
@@ -1095,6 +1099,9 @@ section{
       font-size: 3rem;
    }
 
+   .home .content h3{
+      font-size: 3.5rem;
+   }
 
   .error-message {
    color: red;
