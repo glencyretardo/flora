@@ -13,7 +13,7 @@ if (isset($_POST['order'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $method = mysqli_real_escape_string($conn, $_POST['method']);
     $address = mysqli_real_escape_string($conn, 'house no. ' . $_POST['house'] . ', ' . $_POST['street'] . ', ' . $_POST['barangay'] . ', ' . $_POST['city'] . ', ' . $_POST['country'] . ' - ' . $_POST['pin_code']);
-    $placed_on = date('d-M-Y');
+   
 
     // Retrieve cart data
     $cart_total = 0;
@@ -30,18 +30,14 @@ if (isset($_POST['order'])) {
 
     $total_products = implode(', ', $cart_products);
 
-    // Check if order already exists
-    $order_query = mysqli_query($conn, "SELECT * FROM ordertable WHERE Name = '$name' AND ContactNumber = '$number' AND Email = '$email' AND PaymentMethod = '$method' AND Address = '$address' AND TotalProducts = '$total_products' AND TotalAmount = '$cart_total'") or die('Query failed');
-
     // Process order
-if ($cart_total == 0) {
-    $message[] = 'Your cart is empty!';
-} else {
-    mysqli_query($conn, "INSERT INTO ordertable(UserID, Name, ContactNumber, Email, PaymentMethod, Address, TotalProducts, TotalAmount, OrderDate) VALUES('$user_id', '$name', '$number', '$email', '$method', '$address', '$total_products', '$cart_total', '$placed_on')") or die('Query failed');
-    mysqli_query($conn, "DELETE FROM cart WHERE UserID = '$user_id'") or die('Query failed');
-    $message[] = 'Order placed successfully!';
-}
-
+    if ($cart_total == 0) {
+        $message[] = 'Your cart is empty!';
+    } else {
+        mysqli_query($conn, "INSERT INTO ordertable(UserID, Name, ContactNumber, Email, PaymentMethod, Address, TotalProducts, TotalAmount, OrderDate) VALUES('$user_id', '$name', '$number', '$email', '$method', '$address', '$total_products', '$cart_total', NOW())") or die('Query failed');
+        mysqli_query($conn, "DELETE FROM cart WHERE UserID = '$user_id'") or die('Query failed');
+        $message[] = 'Order placed successfully!';
+    }
 }
 
 ?>
