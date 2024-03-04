@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arizonia&display=swap');
 
-
 :root{
    --pink:#cfacacdb;
    --red:#3d4522e7;
@@ -374,10 +373,11 @@ section{
 
 .home .content {
    text-align: center;
-   position: absolute; /* Change position to absolute */
-   top: 30%; /* Adjust top position */
-   right: 0; /* Move to the rightmost side */
-   z-index: -1;
+   position: absolute;
+   top: 50%; /* Move content 50% down from the top */
+   left: 50%; /* Move content 50% from the left */
+   transform: translate(-50%, -50%); /* Center the content horizontally and vertically */
+   z-index: 1; /* Increase z-index to bring content above background image */
 }
 
 .home .content h3 {

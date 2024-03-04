@@ -145,14 +145,16 @@ if (isset($_POST['add_to_cart'])) {
 
         forms.forEach(function (form) {
             form.addEventListener('submit', function (event) {
-                // Prevent the default form submission
-                event.preventDefault();
+                var isLoggedIn = <?php echo json_encode($userLoggedIn); ?>;
 
-                // Redirect to login page
-                window.location.href = 'login.php';
+                if (!isLoggedIn) {
+                    event.preventDefault();
+                    window.location.href = 'login.php';
+                }
             });
         });
     });
+
 
     // Function to update header transparency based on scroll position
     function updateHeaderTransparency() {
