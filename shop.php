@@ -87,7 +87,8 @@ if (isset($_POST['add_to_cart'])) {
 
 <section class="heading">
     <h3>our shop</h3>
-    <p><a href="home.php">home</a> / shop</p>
+    <a href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
+
 </section>
 
 

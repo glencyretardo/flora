@@ -22,7 +22,9 @@ session_start();
 
 <section class="heading">
     <h3>about us</h3>
-    <p> <a href="home.php">home</a> / about </p>
+    <a href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
+
+    
 </section>
 
 <section class="about">

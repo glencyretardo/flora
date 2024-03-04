@@ -24,7 +24,8 @@ session_start();
 
 <section class="heading">
     <h3>your orders</h3>
-    <p> <a href="home.php">home</a> / orders </p>
+    <a href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
+
 </section>
 
 

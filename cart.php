@@ -59,7 +59,8 @@ if (isset($_POST['update_quantity'])) {
 
 <section class="heading">
     <h3>shopping cart</h3>
-    <p> <a href="home.php">home</a> / cart </p>
+    <a href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
+
 </section>
 
 

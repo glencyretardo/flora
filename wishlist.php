@@ -78,7 +78,8 @@ if (isset($_GET['delete_all'])) {
 
 <section class="heading">
     <h3>Your Wishlist</h3>
-    <p> <a href="home.php">Home</a> / Wishlist </p>
+    <a href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
+
 </section>
 
 <section class="wishlist">

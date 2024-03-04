@@ -111,7 +111,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <section class="heading">
     <h3>contact us</h3>
-    <p> <a href="home.php">home</a> / contact </p>
+    <a href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
+
 </section>
 
 <section class="contact">

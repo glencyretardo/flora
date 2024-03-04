@@ -96,7 +96,8 @@ if (isset($_POST['add_to_wishlist'])) {
 
 <section class="heading">
     <h3>search page</h3>
-    <p> <a href="home.php">home</a> / search </p>
+    <a href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
+
 </section>
 
 <section class="search-form">
