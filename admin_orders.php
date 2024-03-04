@@ -3,10 +3,20 @@ session_start();
 require_once  'database.php';
 
 if(isset($_POST['update_order'])){
-   $OrderID = $_POST['OrderID'];
-   $update_payment = $_POST['update_payment'];
-   mysqli_query($conn, "UPDATE ordertable SET payment_status = '$update_payment' WHERE OrderID = '$OrderID'") or die('query failed');
-   $message[] = 'payment status has been updated!';
+   if(isset($_POST['OrderID']) && isset($_POST['update_payment'])){ // Check if 'OrderID' and 'update_payment' are set
+      $OrderID = $_POST['OrderID'];
+      $update_payment = $_POST['update_payment'];
+      
+      // Check if 'update_payment' is not empty
+      if(!empty($update_payment)) {
+         mysqli_query($conn, "UPDATE ordertable SET payment_status = '$update_payment' WHERE OrderID = '$OrderID'") or die('query failed');
+         $message[] = 'Payment status has been updated!';
+      } else {
+         $message[] = 'Please select a payment status to update or change';
+      }
+   } else {
+      $message[] = 'Please select a payment status to update or change';
+   }
 }
 
 if(isset($_GET['delete'])){
@@ -16,6 +26,7 @@ if(isset($_GET['delete'])){
 }
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,12 +66,12 @@ if(isset($_GET['delete'])){
          <p> total price : <span>$<?php echo $fetch_orders['TotalAmount']; ?>/-</span> </p>
          <p> payment method : <span><?php echo $fetch_orders['PaymentMethod']; ?></span> </p>
          <form action="" method="post">
-            <input type="hidden" name="order_id" value="<?php echo $fetch_orders['OrderID']; ?>">
+            <input type="hidden" name="OrderID" value="<?php echo $fetch_orders['OrderID']; ?>">
             <select name="update_payment">
                <option disabled selected><?php echo $fetch_orders['payment_status']; ?></option>
                <option value="pending">pending</option>
-               <option value="pending">processing</option>
-               <option value="pending">shipped</option>
+               <option value="processing">processing</option>
+               <option value="shipped">shipped</option>
                <option value="completed">completed</option>
             </select>
             <input type="submit" name="update_order" value="update" class="option-btn">
