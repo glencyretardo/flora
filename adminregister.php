@@ -61,6 +61,34 @@ $conn->close();
     <!-- custom css file link  -->
     <link rel="stylesheet" href="style.css">
 
+    <script>
+        function validateEmail() {
+            var email = document.getElementById("email").value;
+            var emailError = document.getElementById("emailError");
+
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!email.match(emailPattern)) {
+                emailError.innerHTML = 'Invalid email format';
+            } else {
+                emailError.innerHTML = '';
+            }
+        }
+
+        function validatePassword() {
+            var password = document.getElementById("pass").value;
+            var passwordError = document.getElementById("passwordError");
+
+            var passwordPattern = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+[\]{};':"\\|,.<>\/?]).{6,}$/;
+
+            if (!password.match(passwordPattern)) {
+                passwordError.innerHTML = 'Password must be at least 6 characters and include at least one letter, one numeric value, and one special character';
+            } else {
+                passwordError.innerHTML = '';
+            }
+        }
+    </script>
+
 </head>
 
 <body>
@@ -80,12 +108,16 @@ $conn->close();
 
     <section class="form-container">
 
-        <form action="" method="post">
+    <form action="" method="post">
             <h3>Register now</h3>
             <input type="text" name="name" class="box" placeholder="Enter your username" required>
-            <input type="email" name="email" class="box" placeholder="Enter your email" required
+            <input type="email" name="email" id="email" class="box" placeholder="Enter your email" required
+                oninput="validateEmail()"
                 value="<?php echo isset($_GET['email']) ? htmlspecialchars($_GET['email']) : ''; ?>">
-            <input type="password" name="pass" class="box" placeholder="Enter your password" required>
+            <div id="emailError"></div>
+            <input type="password" name="pass" id="pass" class="box" placeholder="Enter your password" required
+                oninput="validatePassword()">
+            <div id="passwordError"></div>
             <input type="password" name="cpass" class="box" placeholder="Confirm your password" required>
             <input type="submit" class="btn" name="submit" value="Register now">
             <p>Already have an account? <a href="login.php">Login now</a></p>
