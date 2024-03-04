@@ -49,7 +49,7 @@ session_start();
                     <p> payment method : <span><?php echo $fetch_orders['PaymentMethod']; ?></span> </p>
                     <p> your orders : <span><?php echo $fetch_orders['TotalProducts']; ?></span> </p>
                     <p> total price : <span>₱<?php echo $fetch_orders['TotalAmount']; ?></span> </p>
-                    <p> payment status : <span style="color:<?php echo ($fetch_orders['payment_status'] == 'pending') ? 'tomato' : 'green'; ?>"><?php echo $fetch_orders['payment_status']; ?></span> </p>
+                    <p> Order status : <span style="color:<?php echo ($fetch_orders['payment_status'] == 'pending') ? 'tomato' : 'green'; ?>"><?php echo $fetch_orders['payment_status']; ?></span> </p>
                 </div>
             <?php
             }

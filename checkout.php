@@ -15,20 +15,26 @@ if (isset($_POST['order'])) {
     $address = mysqli_real_escape_string($conn, 'house no. ' . $_POST['house'] . ', ' . $_POST['street'] . ', ' . $_POST['barangay'] . ', ' . $_POST['city'] . ', ' . $_POST['country'] . ' - ' . $_POST['pin_code']);
    
 
+
+
     // Retrieve cart data
-    $cart_total = 0;
-    $cart_products = array();
+    // Retrieve cart data
+$cart_total = 0;
+$cart_products = array();
+$total_quantity = 0; // Variable to hold the total quantity
 
-    $cart_query = mysqli_query($conn, "SELECT c.*, p.ProductName, p.Price FROM cart c JOIN product p ON c.ProductID = p.ProductID WHERE c.UserID = '$user_id'") or die('Query failed');
-    if (mysqli_num_rows($cart_query) > 0) {
-        while ($cart_item = mysqli_fetch_assoc($cart_query)) {
-            $cart_products[] = $cart_item['ProductName'] . ' (' . $cart_item['Quantity'] . ') ';
-            $sub_total = ($cart_item['Price'] * $cart_item['Quantity']);
-            $cart_total += $sub_total;
-        }
+$cart_query = mysqli_query($conn, "SELECT c.*, p.ProductName, p.Price FROM cart c JOIN product p ON c.ProductID = p.ProductID WHERE c.UserID = '$user_id'") or die('Query failed');
+if (mysqli_num_rows($cart_query) > 0) {
+    while ($cart_item = mysqli_fetch_assoc($cart_query)) {
+        $cart_products[] = $cart_item['ProductName'] . ' (' . $cart_item['Quantity'] . ') ';
+        $sub_total = ($cart_item['Price'] * $cart_item['Quantity']);
+        $cart_total += $sub_total;
+        $total_quantity += intval($cart_item['Quantity']); // Add the quantity to the total
     }
+}
 
-    $total_products = implode(', ', $cart_products);
+$total_products = implode(', ', $cart_products);
+
 
     // Process order
     if ($cart_total == 0) {
@@ -38,7 +44,10 @@ if (isset($_POST['order'])) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $message[] = 'Invalid email format!';
         } else {
-            mysqli_query($conn, "INSERT INTO ordertable(UserID, Name, ContactNumber, Email, PaymentMethod, Address, TotalProducts, TotalAmount, OrderDate) VALUES('$user_id', '$name', '$number', '$email', '$method', '$address', '$total_products', '$cart_total', NOW())") or die('Query failed');
+            
+
+            mysqli_query($conn, "INSERT INTO ordertable(UserID, Name, ContactNumber, Email, PaymentMethod, Address, TotalProducts, TotalAmount, OrderDate) VALUES('$user_id', '$name', '$number', '$email', '$method', '$address', '$total_quantity', '$cart_total', NOW())") or die('Query failed');
+
             mysqli_query($conn, "DELETE FROM cart WHERE UserID = '$user_id'") or die('Query failed');
             $message[] = 'Order placed successfully!';
         }
@@ -76,6 +85,7 @@ if (isset($_POST['order'])) {
                     $grand_total += $total_price;
             ?>
                     <p><?php echo $fetch_cart['ProductName'] ?> <span><?php echo '₱' . $fetch_cart['Price'] . ' x ' . $fetch_cart['Quantity'] ?></span> </p>
+                    
             <?php
                 }
             } else {
