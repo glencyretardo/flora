@@ -5,6 +5,7 @@ session_start();
 // Initialize the messages array
 $message = [];
 
+
 if (isset($_POST['add_to_wishlist'])) {
     if (isset($_SESSION['user_id'])) {
         $product_id = $_POST['product_id'];
