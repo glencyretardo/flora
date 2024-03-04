@@ -37,33 +37,14 @@ require_once 'database.php';
 
         <div class="box">
                 <?php
-                $select_pendings = mysqli_query($conn, "SELECT COUNT(*) AS total_pendings FROM `ordertable` WHERE payment_status = 'pending'") or die('query failed');
-                $fetch_pendings = mysqli_fetch_assoc($select_pendings);
-                $total_pendings = $fetch_pendings['total_pendings'];
+                $total_completes = 0;
+                $select_completes = mysqli_query($conn, "SELECT * FROM `ordertable` WHERE payment_status = 'completed'") or die('query failed');
+                while ($fetch_completes = mysqli_fetch_assoc($select_completes)) {
+                    $total_completes += $fetch_completes['TotalAmount'];
+                };
                 ?>
-                <h3><?php echo $total_pendings; ?></h3>
-                <p>total pendings</p>
-            </div>
-
-
-            <div class="box">
-                <?php
-                $select_completes = mysqli_query($conn, "SELECT COUNT(*) AS total_completes FROM `ordertable` WHERE payment_status = 'completed'") or die('query failed');
-                $fetch_completes = mysqli_fetch_assoc($select_completes);
-                $total_completes = $fetch_completes['total_completes'];
-                ?>
-                <h3><?php echo $total_completes; ?></h3>
-                <p>completed orders</p>
-            </div>
-
-
-            <div class="box">
-                <?php
-                $select_orders = mysqli_query($conn, "SELECT * FROM `ordertable`") or die('query failed');
-                $number_of_orders = mysqli_num_rows($select_orders);
-                ?>
-                <h3><?php echo $number_of_orders; ?></h3>
-                <p>orders placed</p>
+                <h3>₱<?php echo $total_completes; ?></h3>
+                <p>completed payments</p>
             </div>
 
             <div class="box">
@@ -74,6 +55,60 @@ require_once 'database.php';
                 <h3><?php echo $number_of_products; ?></h3>
                 <p>products added</p>
             </div>
+
+
+
+            <div class="box">
+                <?php
+                $select_pendings = mysqli_query($conn, "SELECT COUNT(*) AS total_pendings FROM `ordertable` WHERE payment_status = 'pending'") or die('query failed');
+                $fetch_pendings = mysqli_fetch_assoc($select_pendings);
+                $total_pendings = $fetch_pendings['total_pendings'];
+                ?>
+                <h3><?php echo $total_pendings; ?></h3>
+                <p>pendings</p>
+            </div>
+
+            
+            <div class="box">
+                <?php
+                $select_processing = mysqli_query($conn, "SELECT COUNT(*) AS total_processing FROM `ordertable` WHERE payment_status = 'processing'") or die('query failed');
+                $fetch_processing = mysqli_fetch_assoc($select_processing);
+                $total_processing = $fetch_processing['total_processing'];
+                ?>
+                <h3><?php echo $total_processing; ?></h3>
+                <p>processing</p>
+            </div>
+
+            <div class="box">
+                <?php
+                $select_shipped = mysqli_query($conn, "SELECT COUNT(*) AS total_shipped FROM `ordertable` WHERE payment_status = 'shipped'") or die('query failed');
+                $fetch_shipped = mysqli_fetch_assoc($select_shipped);
+                $total_shipped = $fetch_shipped['total_shipped'];
+                ?>
+                <h3><?php echo $total_shipped; ?></h3>
+                <p>shipped</p>
+            </div>
+
+            <div class="box">
+                <?php
+                $select_completes = mysqli_query($conn, "SELECT COUNT(*) AS total_completes FROM `ordertable` WHERE payment_status = 'completed'") or die('query failed');
+                $fetch_completes = mysqli_fetch_assoc($select_completes);
+                $total_completes = $fetch_completes['total_completes'];
+                ?>
+                <h3><?php echo $total_completes; ?></h3>
+                <p>completed orders</p>
+            </div>
+            
+
+            <div class="box">
+                <?php
+                $select_orders = mysqli_query($conn, "SELECT * FROM `ordertable`") or die('query failed');
+                $number_of_orders = mysqli_num_rows($select_orders);
+                ?>
+                <h3><?php echo $number_of_orders; ?></h3>
+                <p>orders placed</p>
+            </div>
+
 
             <div class="box">
                 <?php
