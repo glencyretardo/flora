@@ -2,6 +2,12 @@
 require_once 'database.php';
 session_start();
 
+if (!isset($_SESSION['user_id'])) {
+    header('location:login.php');
+    exit();
+}
+
+$user_id = $_SESSION['user_id']; // Assign $_SESSION['user_id'] to $user_id
 
 
 if (!isset($user_id)) {

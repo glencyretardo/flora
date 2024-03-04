@@ -42,12 +42,12 @@ session_start();
                 <div class="box">
                     <p> placed on : <span><?php echo $fetch_orders['OrderDate']; ?></span> </p>
                     <p> name : <span><?php echo $fetch_orders['Name']; ?></span> </p>
-                    <p> number : <span><?php echo $fetch_orders['number']; ?></span> </p>
+                    <p> number : <span><?php echo $fetch_orders['ContactNumber']; ?></span> </p>
                     <p> email : <span><?php echo $fetch_orders['Email']; ?></span> </p>
                     <p> address : <span><?php echo $fetch_orders['Address']; ?></span> </p>
                     <p> payment method : <span><?php echo $fetch_orders['PaymentMethod']; ?></span> </p>
                     <p> your orders : <span><?php echo $fetch_orders['TotalProducts']; ?></span> </p>
-                    <p> total price : <span>$<?php echo $fetch_orders['TotalAmount']; ?>/-</span> </p>
+                    <p> total price : <span>₱<?php echo $fetch_orders['TotalAmount']; ?></span> </p>
                     <p> payment status : <span style="color:<?php echo ($fetch_orders['payment_status'] == 'pending') ? 'tomato' : 'green'; ?>"><?php echo $fetch_orders['payment_status']; ?></span> </p>
                 </div>
             <?php
