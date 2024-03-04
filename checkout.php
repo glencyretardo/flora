@@ -34,15 +34,14 @@ if (isset($_POST['order'])) {
     $order_query = mysqli_query($conn, "SELECT * FROM ordertable WHERE Name = '$name' AND ContactNumber = '$number' AND Email = '$email' AND PaymentMethod = '$method' AND Address = '$address' AND TotalProducts = '$total_products' AND TotalAmount = '$cart_total'") or die('Query failed');
 
     // Process order
-    if ($cart_total == 0) {
-        $message[] = 'Your cart is empty!';
-    } elseif (mysqli_num_rows($order_query) > 0) {
-        $message[] = 'Order placed already!';
-    } else {
-        mysqli_query($conn, "INSERT INTO ordertable(UserID, Name, ContactNumber, Email, PaymentMethod, Address, TotalProducts, TotalAmount, DateAdded) VALUES('$user_id', '$name', '$number', '$email', '$method', '$address', '$total_products', '$cart_total', '$placed_on')") or die('Query failed');
-        mysqli_query($conn, "DELETE FROM cart WHERE UserID = '$user_id'") or die('Query failed');
-        $message[] = 'Order placed successfully!';
-    }
+if ($cart_total == 0) {
+    $message[] = 'Your cart is empty!';
+} else {
+    mysqli_query($conn, "INSERT INTO ordertable(UserID, Name, ContactNumber, Email, PaymentMethod, Address, TotalProducts, TotalAmount, OrderDate) VALUES('$user_id', '$name', '$number', '$email', '$method', '$address', '$total_products', '$cart_total', '$placed_on')") or die('Query failed');
+    mysqli_query($conn, "DELETE FROM cart WHERE UserID = '$user_id'") or die('Query failed');
+    $message[] = 'Order placed successfully!';
+}
+
 }
 
 ?>
