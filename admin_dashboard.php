@@ -43,7 +43,7 @@ require_once 'database.php';
                     $total_completes += $fetch_completes['TotalAmount'];
                 };
                 ?>
-                <h3>₱<?php echo $total_completes; ?></h3>
+                <h3>₱<?php echo number_format($total_completes); ?></h3>
                 <p>completed payments</p>
             </div>
 

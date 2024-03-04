@@ -63,7 +63,7 @@ if(isset($_GET['delete'])){
          <p> email : <span><?php echo $fetch_orders['Email']; ?></span> </p>
          <p> address : <span><?php echo $fetch_orders['Address']; ?></span> </p>
          <p> total products : <span><?php echo $fetch_orders['TotalProducts']; ?></span> </p>
-         <p> total price : <span>₱<?php echo $fetch_orders['TotalAmount']; ?></span> </p>
+         <p> total price : <span>₱<?php echo number_format($fetch_orders['TotalAmount']); ?></span></p>
          <p> payment method : <span><?php echo $fetch_orders['PaymentMethod']; ?></span> </p>
          <form action="" method="post">
             <input type="hidden" name="OrderID" value="<?php echo $fetch_orders['OrderID']; ?>">

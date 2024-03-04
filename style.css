@@ -420,6 +420,7 @@ section{
    padding:2rem;
    text-align: center;
    position: relative;
+   justify-content: center;
 }
 
 .products .box-container .box .image{

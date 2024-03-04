@@ -75,14 +75,15 @@ if (isset($_POST['order'])) {
                     $total_price = ($fetch_cart['Price'] * $fetch_cart['Quantity']);
                     $grand_total += $total_price;
             ?>
-                    <p><?php echo $fetch_cart['ProductName'] ?> <span><?php echo '₱' . $fetch_cart['Price'] . ' x ' . $fetch_cart['Quantity'] ?></span> </p>
+                    <p><?php echo $fetch_cart['ProductName'] ?> <span><?php echo '₱' . number_format($fetch_cart['Price']) . ' x ' . $fetch_cart['Quantity'] ?></span> </p>
             <?php
                 }
             } else {
                 echo '<p class="empty">Your cart is empty</p>';
             }
             ?>
-            <div class="grand-total">Grand Total: <span>₱<?php echo $grand_total; ?></span></div>
+            <div class="grand-total">Grand Total: <span>₱<?php echo number_format ($grand_total); ?></span></div>
+
         </section>
     </div>
     <section class="checkout-container">

@@ -107,13 +107,13 @@ if (isset($_POST['add_to_cart'])) {
         ?>
         <form action="" method="POST" class="box <?php echo $userLoggedIn ? 'user-logged-in' : ''; ?>">
         <a href="view_page.php?pid=<?php echo $fetch_products['ProductID']; ?>" class="fas fa-eye"></a>
-                <div class="price">₱<?php echo $fetch_products['Price']; ?></div>
+                <div class="price">₱<?php echo number_format($fetch_products['Price']); ?></div>
                 <img src="uploaded_img/<?php echo $fetch_products['image']; ?>" alt="" class="image">
                 <div class="name"><?php echo $fetch_products['ProductName']; ?></div>
                 <input type="number" name="product_quantity" value="1" min="0" class="qty">
                 <input type="hidden" name="product_id" value="<?php echo $fetch_products['ProductID']; ?>">
                 <input type="hidden" name="product_name" value="<?php echo $fetch_products['ProductName']; ?>">
-                <input type="hidden" name="product_price" value="<?php echo $fetch_products['Price']; ?>">
+                <input type="hidden" name="product_price" value="<?php echo number_format($fetch_products['Price']); ?>">
                 <input type="hidden" name="product_image" value="<?php echo $fetch_products['image']; ?>">
                 <input type="submit" value="add to wishlist" name="add_to_wishlist" class="option-btn">
                 <input type="submit" value="add to cart" name="add_to_cart" class="btn">
