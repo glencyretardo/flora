@@ -121,6 +121,7 @@ $conn->close();
             <input type="password" name="cpass" class="box" placeholder="Confirm your password" required>
             <input type="submit" class="btn" name="submit" value="Register now">
             <p>Already have an account? <a href="login.php">Login now</a></p>
+            <p><a href="home.php"> Proceed to Flora Homepage  </a></p>
         </form>
 
         
