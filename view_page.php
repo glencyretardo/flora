@@ -4,6 +4,13 @@ include 'database.php';
 session_start();
 
 
+$user_id = null; // Initialize $user_id variable
+
+// Check if user is logged in and retrieve user ID
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+}
+
 if (isset($_POST['add_to_wishlist'])) {
     $product_id = $_POST['product_id'];
     $product_name = $_POST['product_name'];

@@ -87,7 +87,7 @@ session_start();
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <h3>n/a</h3>
+            <!-- <h3>n/a</h3> -->
         </div>
 
         <div class="box">
@@ -100,7 +100,7 @@ session_start();
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
             </div>
-            <h3>n/a</h3>
+            <!-- <h3>n/a</h3> -->
         </div>
 
         <div class="box">
@@ -113,7 +113,7 @@ session_start();
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <h3>n/a</h3>
+            <!-- <h3>n/a</h3> -->
         </div>
 
         <div class="box">
@@ -125,7 +125,7 @@ session_start();
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
             </div>
-            <h3>n/a</h3>
+            <!-- <h3>n/a</h3> -->
         </div>
 
         <div class="box">
@@ -138,7 +138,7 @@ session_start();
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <h3>n/a</h3>
+            <!-- <h3>n/a</h3> -->
         </div>
 
         <div class="box">
@@ -151,7 +151,7 @@ session_start();
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
             </div>
-            <h3>n/a</h3>
+            <!-- <h3>n/a</h3> -->
         </div>
 
     </div>
