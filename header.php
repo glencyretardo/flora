@@ -63,13 +63,13 @@ if (isset($message)) {
                 <li><a href="orders.php">orders</a></li>
                 <li>
                     <?php if (isUserLoggedIn()) { ?>
-                        <a href="#" onclick="toggleDropdown()" class="menu-btn">account +</a>
+                        <a href="#" onclick="toggleDropdown()" class="menu-btn-toggle">account +</a>
                         <ul id="dropdown-menu" class="dropdown-content"> <!-- Correct class name -->
                             <li><a href="#"><?php echo $_SESSION['user_name']; ?></a></li>
                             <li><a href="logout.php">logout</a></li>
                         </ul>
                     <?php } else { ?>
-                        <a href="#" onclick="toggleDropdown()" class="menu-btn">account +</a>
+                        <a href="#" onclick="toggleDropdown()" class="menu-btn-toggle">account +</a>
                         <ul id="dropdown-menu" class="dropdown-content"> <!-- Correct class name -->
                             <li><a href="login.php">login</a></li>
                             <li><a href="register.php">register</a></li>
@@ -98,15 +98,17 @@ if (isset($message)) {
     function toggleDropdown() {
         var dropdownMenu = document.getElementById("dropdown-menu");
         dropdownMenu.classList.toggle("show");
+        console.log()
     }
 
     window.onclick = function(event) {
-        if (!event.target.matches('.menu-btn')) {
+        if (!event.target.matches('.menu-btn-toggle')) {
             var dropdowns = document.getElementsByClassName("dropdown-content");
             for (var i = 0; i < dropdowns.length; i++) {
                 var openDropdown = dropdowns[i];
                 if (openDropdown.classList.contains('show')) {
                     openDropdown.classList.remove('show');
+                    console.log()
                 }
             }
         }
