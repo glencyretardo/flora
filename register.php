@@ -90,17 +90,17 @@ $conn->close();
         }
 
         function validatePassword() {
-            var password = document.getElementById("pass").value;
-            var passwordError = document.getElementById("passwordError");
+        var password = document.getElementById("pass").value;
+        var passwordError = document.getElementById("passwordError");
 
-            var passwordPattern = /^(?=.*[0-9]).{6,}$/;
+        var passwordPattern = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+[\]{};':"\\|,.<>\/?]).{6,}$/;
 
-            if (!password.match(passwordPattern)) {
-                passwordError.innerHTML = 'Password must be at least 6 characters and include a numeric value';
-            } else {
-                passwordError.innerHTML = '';
-            }
+        if (!password.match(passwordPattern)) {
+            passwordError.innerHTML = '<ul><li>Password must be at least 6 characters</li><li>Include at least one letter</li><li>Include at least one numeric value</li><li>Include at least one special character</li></ul>';
+        } else {
+            passwordError.innerHTML = '';
         }
+    }
     </script>
 
 </head>
@@ -135,6 +135,7 @@ $conn->close();
             <input type="password" name="cpass" class="box" placeholder="Confirm your password" required>
             <input type="submit" class="btn" name="submit" value="Register now">
             <p>Already have an account? <a href="login.php">Login now</a></p>
+            <p><a href="home.php">back to home </a></p>
         </form>
 
     </section>
