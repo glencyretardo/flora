@@ -5,6 +5,11 @@ ini_set('display_errors', '1');
 require_once 'database.php';
 session_start();
 
+if (!isset($_SESSION['admin_name'])) {
+   header("Location: admin.php");
+   exit();
+}
+
 // Assuming $conn is your database connection, ensure it is established before using it.
 
 if(isset($_POST['add_product'])){

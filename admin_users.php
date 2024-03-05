@@ -1,8 +1,14 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
-include 'database.php';
-
+require_once 'database.php';
 session_start();
+
+if (!isset($_SESSION['admin_name'])) {
+   header("Location: admin.php");
+   exit();
+}
 
 
 if(isset($_GET['delete'])){

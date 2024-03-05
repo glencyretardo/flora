@@ -152,7 +152,7 @@ section{
 .header .flex{
    display: flex;
    align-items: center;
-   justify-content: space-between;
+   justify-content: center;
    padding:2rem;
    max-width: 1200px;
    margin:0 auto;
@@ -173,7 +173,56 @@ section{
    animation: fadeIn .2s linear;
 }
 
-.header .flex .account-box.visible{
+
+.header .logo-icons {
+   display: flex; /* Display the logo and icons beside each other */
+   align-items: center; /* Align items vertically */
+   margin-right: auto; /* Push the icons to the right */
+}
+
+
+.header .logo {
+   font-size: 2.5rem;
+   color: var(--black);
+}
+
+.header .logo span {
+   color: var(--pink);
+}
+
+.header .icons {
+   display: flex; /* Make the icons flex container */
+   align-items: center; /* Align items vertically */
+}
+
+
+.header .icons div {
+   font-size: 2.5rem;
+   margin-left: 1.7rem;
+   cursor: pointer;
+   color: var(--black);
+}
+
+.header .icons div:hover {
+   color: var(--pink);
+}
+
+
+.header .flex .account-box {
+   /* Remove position: absolute; and the top and left properties */
+   width: 33rem;
+   border-radius: .5rem;
+   box-shadow: var(--box-shadow);
+   background-color: var(--white);
+   padding: 2rem;
+   text-align: center;
+   border: var(--border);
+   display: none;
+   animation: fadeIn .2s linear;
+}
+
+.header .flex .account-box.visible {
+   /* Remove position: absolute; and the top and left properties */
    display: inline-block;
 }
 
@@ -207,16 +256,37 @@ section{
    margin-left: 1.7rem;
    cursor: pointer;
    color:var(--black);
+   display: flex; /* Make the icons flex container */
+   align-items: center;
+/* Align items vertically */
 }
+
+.header .flex .icons div {
+   font-size: 2.5rem; /* Adjust the icon size as needed */
+   margin-left: 1.7rem; /* Add spacing between the icons */
+   cursor: pointer;
+   color: var(--black);
+}
+
+
 
 .header .flex .icons div:hover{
    color:var(--pink);
+}
+
+
+.header .flex .navbar {
+   margin-top: 1rem;
+   text-align: center; /* Center the text */
+   display: flex;
+   justify-content: center; /* Center the flex items horizontally */
 }
 
 .header .flex .navbar a{
    margin:0 1rem;
    font-size: 2rem;
    color:var(--light-color);
+   
 }
 
 .header .flex .navbar a:hover{
@@ -232,6 +302,10 @@ section{
 .header .flex .logo span{
    color:var(--pink);
 }
+
+
+
+
 
 #menu-btn{
    display: none;
@@ -534,28 +608,55 @@ section{
 
 }
 
-@media (max-width:768px){
+
+
+
+@media (max-width:600px){
 
    #menu-btn{
-      display: inline-block;
+      display:none;
    }
-
+   .header .flex{
+      flex-direction: column;
+        padding: 2rem;
+   }
    .header .flex .navbar{
-      position: absolute;
-      top:99%; left:0; right:0;
-      background-color: var(--white);
-      border-top: var(--border);
-      border-bottom: var(--border);
-      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      margin-top: 1rem;
+      text-align: center;
+      display: flex;
    }
+   
+   .header .flex .logo-icons {
+      margin-right: 0;
+      display: flex;
+      align-items: center; /* Align items vertically */
+  }
+  .header .flex .logo {
+   font-size: 3rem; /* Adjust the font size as needed */
+}
+
+
 
    .header .flex .navbar.active{
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
    }
 
    .header .flex .navbar a{
-      margin:2rem;
-      display: block;
+     margin: 0.5rem;
+   display: block;
+   }
+   .header .flex .navbar ul li ul{
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 15rem;
+      background-color: var(--white);
+      animation: fadeIn .2s linear;
+      display: none;
+   }
+
+   .header .flex .navbar ul li ul li{
+      padding-left: 2rem;
    }
 
 }
@@ -569,5 +670,8 @@ section{
    .title{
       font-size: 3.5rem;
    }
+   
+   
+
 
 }
