@@ -72,7 +72,7 @@ $total_products = implode(', ', $cart_products);
     <?php include 'header.php'; ?>
     <section class="heading">
         <h3>Checkout Order</h3>
-        <p><a href="home.php">Home</a> / Checkout</p>
+        <a href="cart.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
     </section>
     <div class="right-box">
         <section class="display-order">
@@ -84,7 +84,7 @@ $total_products = implode(', ', $cart_products);
                     $total_price = ($fetch_cart['Price'] * $fetch_cart['Quantity']);
                     $grand_total += $total_price;
             ?>
-                    <p><?php echo $fetch_cart['ProductName'] ?> <span><?php echo '₱' . $fetch_cart['Price'] . ' x ' . $fetch_cart['Quantity'] ?></span> </p>
+                    <p><?php echo $fetch_cart['ProductName'] ?> <span>₱<?php echo number_format($fetch_cart['Price']) ?> x <?php echo $fetch_cart['Quantity'] ?>
                     
             <?php
                 }
