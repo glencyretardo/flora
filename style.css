@@ -116,16 +116,10 @@ section{
    cursor: pointer;
    padding:1rem 3rem;
    text-transform: capitalize;
-   margin-bottom: 1rem;
-   
 }
 
 .btn{
    background-color: var(--pink);
-   display: block; /* Change to block element */
-   margin: 0 auto; 
-   font-size: 2rem;
-   
    
 }
 
@@ -136,6 +130,7 @@ section{
 .option-btn{
    background-color: var(--orange);
 }
+
 
 .btn:hover,
 .delete-btn:hover,
