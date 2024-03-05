@@ -40,7 +40,13 @@ if (isset($_GET['admin_logout'])) {
 
 <header class="header">
     <div class="flex">
-        <a href="admin_page.php" class="logo">flora.<span>Admin</span></a>
+        <div class="logo-icons">
+            <a href="admin_dashboard.php" class="logo">flora.<span>Admin</span></a>
+            <div class="icons">
+                <div id="menu-btn" class="fas fa-bars"></div>
+                <div id="user-btn" class="fas fa-user"></div>
+            </div>
+        </div>
         <nav class="navbar">
             <a href="admin_dashboard.php">home</a>
             <a href="admin_products.php">products</a>
@@ -48,10 +54,6 @@ if (isset($_GET['admin_logout'])) {
             <a href="admin_users.php">users</a>
             <a href="admin_contacts.php">messages</a>
         </nav>
-        <div class="icons">
-            <div id="menu-btn" class="fas fa-bars"></div>
-            <div id="user-btn" class="fas fa-user"></div>
-        </div>
         <div class="account-box" id="account-box">
             <?php if (isset($_SESSION['admin_name'])) { ?>
                 <p> admin : <span><?php echo $_SESSION['admin_name']; ?></span></p>
@@ -70,6 +72,11 @@ if (isset($_GET['admin_logout'])) {
 
         userBtn.addEventListener('click', function () {
             accountBox.classList.toggle('visible');
+            var userBtnRect = userBtn.getBoundingClientRect();
+
+        // Set the position of the account box below the user icon
+        accountBox.style.top = userBtnRect.bottom + 'px';
+        accountBox.style.left = userBtnRect.left + 'px';
         });
 
         function logout() {
