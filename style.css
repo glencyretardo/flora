@@ -256,7 +256,7 @@ section{
 }
 
 .header .flex .logo{
-   font-size: 2.5rem;
+   font-size: 4rem;
    color:var(--pink);
 }
 
@@ -1031,23 +1031,21 @@ section{
 
 }
 
-@media (max-width:768px){
+@media (max-width:600px){
 
    #menu-btn{
-      display: inline-block;
+      display:none;
    }
 
    .header .flex{
-      padding:2rem;
+      flex-direction: column;
+        padding: 1rem;
    }
 
    .header .flex .navbar{
-      position: absolute;
-      top:99%; left:0; right:0;
-      background-color: var(--white);
-      border-top: var(--border);
-      border-bottom: var(--border);
-      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      margin-top: 1rem;
+      text-align: center;
+      display: flex;
    }
 
    .header .flex .navbar.active{
@@ -1055,15 +1053,17 @@ section{
    }
 
    .header .flex .navbar ul li{
-      width: 100%;
-      padding:.5rem;
+      display: block;
    }
 
    .header .flex .navbar ul li ul{
-      position: static;
-      width: 100%;
-      animation: none;
-      background-color: var(--light-bg);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 15rem;
+      background-color: var(--white);
+      animation: fadeIn .2s linear;
+      display: none;
    }
 
    .header .flex .navbar ul li ul li{
@@ -1110,4 +1110,8 @@ section{
    display: none;
 }
 
+}
+
+.opaque-header {
+   background-color: rgba(255, 255, 255, 0.5) !important;
 }
