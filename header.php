@@ -90,3 +90,11 @@ if (isset($message)) {
     </div>
 
 </header>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var header = document.querySelector('.header');
+    header.addEventListener('click', function() {
+        header.classList.toggle('opaque-header');
+    });
+});
+</script>
