@@ -81,12 +81,12 @@ require_once 'database.php';
 
             <div class="box">
                 <?php
-                $select_shipped = mysqli_query($conn, "SELECT COUNT(*) AS total_shipped FROM `ordertable` WHERE payment_status = 'shipped'") or die('query failed');
-                $fetch_shipped = mysqli_fetch_assoc($select_shipped);
-                $total_shipped = $fetch_shipped['total_shipped'];
+                $select_delivered = mysqli_query($conn, "SELECT COUNT(*) AS total_delivered FROM `ordertable` WHERE payment_status = 'delivered'") or die('query failed');
+                $fetch_delivered = mysqli_fetch_assoc($select_delivered);
+                $total_delivered = $fetch_delivered['total_delivered'];
                 ?>
-                <h3><?php echo $total_shipped; ?></h3>
-                <p>shipped</p>
+                <h3><?php echo $total_delivered; ?></h3>
+                <p>delivered</p>
             </div>
 
             <div class="box">
