@@ -18,10 +18,7 @@
             <a href="cart.php">my cart</a>
         </div>
 
-        <div class="box">
-            <a href="home.php"><img src="images/flora_logo1.png" alt="Flower Shop Logo"></a>
-            
-        </div>
+
 
 
         <div class="box">

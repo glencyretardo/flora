@@ -78,7 +78,7 @@ if (isset($_GET['delete_all'])) {
 
 <section class="heading">
     <h3>Your Wishlist</h3>
-    <a href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
+    <a id="backButton" href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
 
 </section>
 
@@ -122,7 +122,15 @@ if (isset($_GET['delete_all'])) {
            onclick="return confirm('Delete all from wishlist?');">Delete All</a>
     </div>
 </section>
+
 <?php include 'footer.php'; ?>
+
+<script>
+    document.getElementById("backButton").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default behavior of anchor element
+        window.location.href = this.href; // Navigate to the specified href
+    });
+</script>
 
 </body>
 </html>

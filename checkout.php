@@ -73,6 +73,7 @@ $total_products = implode(', ', $cart_products);
     <section class="heading">
         <h3>Checkout Order</h3>
         <a href="cart.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
+
     </section>
     <div class="right-box">
         <section class="display-order">
@@ -175,6 +176,10 @@ $total_products = implode(', ', $cart_products);
         </form>
     </div>
 </section>
+
+
+<?php include 'footer.php'; ?>
+
 <script>
 // Define email validation function outside of the validateForm function
 function validateEmail(email) {
@@ -299,6 +304,12 @@ return isValid;
 }
 </script>
 
-<?php include 'footer.php'; ?>
+<script>
+    document.getElementById("backButton").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default behavior of anchor element
+        window.location.href = this.href; // Navigate to the specified href
+    });
+</script>
+
 </body>
 </html>

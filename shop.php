@@ -87,7 +87,7 @@ if (isset($_POST['add_to_cart'])) {
 
 <section class="heading">
     <h3>our shop</h3>
-    <a href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
+    <a id="backButton" href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
 
 </section>
 
@@ -121,7 +121,16 @@ if (isset($_POST['add_to_cart'])) {
     </div>
 </section>
 
+
+<script>
+    document.getElementById("backButton").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default behavior of anchor element
+        window.location.href = this.href; // Navigate to the specified href
+    });
+</script>
+
 <?php include 'footer.php'; ?>
+
 
 </body>
 </html>

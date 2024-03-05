@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <section class="heading">
     <h3>contact us</h3>
-    <a href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
+    <a id="backButton" href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
 
 </section>
 
@@ -191,5 +191,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     });
 </script>
+
+<script>
+    document.getElementById("backButton").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default behavior of anchor element
+        window.location.href = this.href; // Navigate to the specified href
+    });
+</script>
+
 </body>
 </html>
