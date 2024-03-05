@@ -168,7 +168,13 @@ $total_products = implode(', ', $cart_products);
                     <input type="number" min="0" name="pin_code" id="pin_code">
                     <span id="pin_codeError" style="color: red;"></span>
                 </div>
+
             </div>
+
+            <div class="note">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>Note: No Cancellation.</span>
+                </div>
 
             <input type="submit" name="order" value="Order Now" class="btn">
         </form>

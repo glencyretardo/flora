@@ -91,6 +91,20 @@ section{
    user-select: none;
 }
 
+.note {
+   font-family: 'Rubik', sans-serif;
+   padding: 1.5rem;
+   font-size: 2rem;
+   color: var(--orange); /* Same color as --orange from :root */
+   /* border: var(--border); */
+   /* box-shadow: var(--box-shadow); */
+   text-align: center;
+   /* background-color: var(--white); */
+   /* border-radius: .5rem; */
+   text-transform: capitalize;
+}
+
+
 .btn,
 .delete-btn,
 .option-btn{
@@ -102,11 +116,16 @@ section{
    cursor: pointer;
    padding:1rem 3rem;
    text-transform: capitalize;
+   margin-bottom: 1rem;
    
 }
 
 .btn{
    background-color: var(--pink);
+   display: block; /* Change to block element */
+   margin: 0 auto; 
+   font-size: 2rem;
+   
    
 }
 
@@ -1087,8 +1106,10 @@ section{
 }
 
 .footer .credit span{
-   color:var(--pink);
-}
+   color:var(--orange);
+   text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
+   }
+
 .dropdown-content {
    display: none;
    position: absolute;
