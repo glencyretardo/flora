@@ -282,8 +282,8 @@ if (number == "") {
 } else if (isNaN(number)) {
     document.getElementById("numberError").innerText = "Contact number must be a number";
     isValid = false;
-} else if (number.length < 2) {
-    document.getElementById("numberError").innerText = "Contact number must be at least 2 characters long";
+} else if (number.length !== 11) { // Check if the length is exactly 11 digits
+    document.getElementById("numberError").innerText = "Enter 11-digit number";
     isValid = false;
 } else {
     document.getElementById("numberError").innerText = "";
