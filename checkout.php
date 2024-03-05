@@ -72,10 +72,10 @@ $total_products = implode(', ', $cart_products);
     <?php include 'header.php'; ?>
     <section class="heading">
         <h3>Checkout Order</h3>
-        <a href="cart.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
+        <a id="backButton" href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
 
     </section>
-    <div class="right-box">
+ 
         <section class="display-order">
             <?php
             $grand_total = 0;
@@ -97,8 +97,8 @@ $total_products = implode(', ', $cart_products);
 
         </section>
     </div>
-    <section class="checkout-container">
-    <div class="left-box">
+    <section class="checkout">
+
     <form action="" method="POST" onsubmit="return validateForm()" novalidate>
 
 
@@ -117,12 +117,10 @@ $total_products = implode(', ', $cart_products);
                 </div>
 
                 <div class="inputBox">
-    <span>Email:</span>
-    <input type="email" name="email" id="email" value="<?php echo isset($_GET['email']) ? htmlspecialchars($_GET['email']) : ''; ?>">
-    <span id="emailError" style="color: red;"></span>
-</div>
-
-
+                    <span>Email:</span>
+                    <input type="email" name="email" id="email" value="<?php echo isset($_GET['email']) ? htmlspecialchars($_GET['email']) : ''; ?>">
+                    <span id="emailError" style="color: red;"></span>
+                </div>
 
                 <div class="inputBox">
                     <span>Payment Method:</span>
@@ -302,6 +300,13 @@ if (pin_code == "") {
 
 return isValid;
 }
+</script>
+
+<script>
+    document.getElementById("backButton").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default behavior of anchor element
+        window.location.href = this.href; // Navigate to the specified href
+    });
 </script>
 
 <script>

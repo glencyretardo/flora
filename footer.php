@@ -18,9 +18,6 @@
             <a href="cart.php">my cart</a>
         </div>
 
-
-
-
         <div class="box">
             <h3>contact us</h3>
             <p> <i class="fas fa-phone"></i> 0980-456-1390 </p>
@@ -40,6 +37,6 @@
     </div>
 
     <div class="credit">
-    <span>La Rosa Flower Shop © 2021</span> </div>
+    <span>flora flower shop © 2024</span> </div>
 
 </section>
