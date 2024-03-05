@@ -91,6 +91,20 @@ section{
    user-select: none;
 }
 
+.note {
+   font-family: 'Rubik', sans-serif;
+   padding: 1.5rem;
+   font-size: 2rem;
+   color: var(--orange); /* Same color as --orange from :root */
+   /* border: var(--border); */
+   /* box-shadow: var(--box-shadow); */
+   text-align: center;
+   /* background-color: var(--white); */
+   /* border-radius: .5rem; */
+   text-transform: capitalize;
+}
+
+
 .btn,
 .delete-btn,
 .option-btn{
@@ -102,11 +116,16 @@ section{
    cursor: pointer;
    padding:1rem 3rem;
    text-transform: capitalize;
+   margin-bottom: 1rem;
    
 }
 
 .btn{
    background-color: var(--pink);
+   display: block; /* Change to block element */
+   margin: 0 auto; 
+   font-size: 2rem;
+   
    
 }
 
@@ -801,6 +820,99 @@ section{
    color:var(--red);
 }
 
+.wishlist .box-container{
+   max-width: 1200px;
+   margin:0 auto;
+   display: grid;
+   grid-template-columns: repeat(auto-fit, 33rem);
+   gap:1.5rem;
+   align-items: flex-start;
+   justify-content: center;
+}
+
+.wishlist .box-container .box{
+   padding:2rem;
+   text-align: center;
+   background-color: var(--white);
+   border:var(--border);
+   box-shadow: var(--box-shadow);
+   border-radius: .5rem;
+   position: relative;
+}
+
+.wishlist .box-container .box .image{
+   height: 35rem;
+   width: 100%;
+   object-fit: cover;
+}
+
+.wishlist .box-container .box .fa-eye,
+.wishlist .box-container .box .fa-times{
+   position: absolute;
+   top:1rem;
+   height: 4.5rem;
+   width: 4.5rem;
+   line-height: 4.3rem;
+   font-size: 2rem;
+   border-radius: .5rem;
+}
+
+.wishlist .box-container .box .fa-eye{
+   right:1rem;
+   border:var(--border);
+   background-color: var(--white);
+   color:var(--black);
+}
+
+.wishlist .box-container .box .fa-eye:hover{
+   background-color: var(--black);
+   color:var(--white);
+}
+
+.wishlist .box-container .box .fa-times{
+   background-color: var(--red);
+   color:var(--white);
+}
+
+.wishlist .box-container .box .fa-times:hover{
+   background-color: var(--black);
+}
+
+.wishlist .box-container .box .name{
+   font-size: 2rem;
+   color:var(--black);
+   margin:1rem 0;
+}
+
+.wishlist .box-container .box .price{
+   font-size: 2.5rem;
+   color:var(--red);
+   margin:.5rem 0;
+}
+
+.wishlist .wishlist-total{
+   max-width: 1200px;
+   margin:0 auto;
+   padding:2rem;
+   text-align: center;
+   background-color: var(--white);
+   border:var(--border);
+   box-shadow: var(--box-shadow);
+   border-radius: .5rem;
+   margin-top: 2rem;
+}
+
+.wishlist .wishlist-total p{
+   font-size: 2.5rem;
+   color:var(--light-color);
+   margin-bottom: 1rem;
+}
+
+.wishlist .wishlist-total p span{
+   color:var(--red);
+}
+
+
 .display-order{
    max-width: 1200px;
    margin:0 auto;
@@ -994,8 +1106,10 @@ section{
 }
 
 .footer .credit span{
-   color:var(--pink);
-}
+   color:var(--orange);
+   text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
+   }
+
 .dropdown-content {
    display: none;
    position: absolute;

@@ -93,8 +93,7 @@ if (isset($_POST['add_to_cart'])) {
 
 
 <section class="products">
-    <h1 class="title">latest products</h1>
-    <div class="box-container">
+        <div class="box-container">
         <?php
         $select_products = mysqli_query($conn, "SELECT * FROM `product` LIMIT 6") or die('query failed');
         if(mysqli_num_rows($select_products) > 0){

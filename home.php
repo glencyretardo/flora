@@ -137,7 +137,7 @@ if (isset($_POST['add_to_cart'])) {
 
 <div class="content">
     <h3>have any questions?</h3>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio officia aliquam quis saepe? Quia, libero.</p>
+    <p>You can reach us out in the provided details below for any further questions or inquiries.</p>
     <a href="contact.php" class="btn">contact us</a>
 </div>
 </section>

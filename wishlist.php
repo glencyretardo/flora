@@ -99,10 +99,10 @@ if (isset($_GET['delete_all'])) {
                     <a href="view_page.php?pid=<?php echo $fetch_wishlist['ProductID']; ?>" class="fas fa-eye"></a>
                     <img src="uploaded_img/<?php echo $fetch_wishlist['image']; ?>" alt="" class="image">
                     <div class="name"><?php echo $fetch_wishlist['product_name']; ?></div>
-                    <div class="price">₱<?php echo $fetch_wishlist['price']; ?></div>
+                    <div class="price">₱<?php echo number_format($fetch_wishlist['price']); ?></div>
                     <input type="hidden" name="product_id" value="<?php echo $fetch_wishlist['ProductID']; ?>">
                     <input type="hidden" name="product_name" value="<?php echo $fetch_wishlist['product_name']; ?>">
-                    <input type="hidden" name="product_price" value="<?php echo $fetch_wishlist['price']; ?>">
+                    <input type="hidden" name="product_price" value="<?php echo number_format($fetch_wishlist['price']); ?>">
                     <input type="hidden" name="product_image" value="<?php echo $fetch_wishlist['image']; ?>">
                     <input type="submit" value="Add to Cart" name="add_to_cart" class="btn">
                 </form>
@@ -115,7 +115,7 @@ if (isset($_GET['delete_all'])) {
         ?>
     </div>
     <div class="wishlist-total">
-        <p>Grand Total: <span>$<?php echo $grand_total; ?>/-</span></p>
+        <p>Grand Total: <span>₱<?php echo number_format($grand_total); ?></span></p>
         <a href="shop.php" class="option-btn">Continue Shopping</a>
         <a href="wishlist.php?delete_all"
            class="delete-btn <?php echo ($grand_total > 1) ? '' : 'disabled' ?>"
