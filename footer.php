@@ -28,7 +28,7 @@
 
         <div class="box">
             <h3>follow us</h3>
-            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i>facebook</a>
+            <a href="https://www.facebook.com/profile.php?id=100006255347738"><i class="fab fa-facebook-f"></i>facebook</a>
             <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i>twitter</a>
             <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i>instagram</a>
             <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i>linkedin</a>

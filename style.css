@@ -234,6 +234,16 @@ section{
    border-radius: .5rem;
 }
 
+.form-container form .error {
+   font-size: 1.3rem; /* Adjust the font size of the error message */
+   color: rgb(192, 5, 5); /* Make the error message text red */
+   text-align: left; /* Align the error message to the left */
+   margin-top: 0.5rem; /* Add some top margin for spacing */
+    margin-left: 3rem;
+}
+
+
+
 .form-container form p{
    margin-top: 1.5rem;
    font-size: 2rem;
@@ -1221,7 +1231,7 @@ text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
 @media (max-width:450px){
 
    html{
-      font-size: 50%;
+      font-size: 40%;
    }
 
    .heading h3{
@@ -1241,13 +1251,71 @@ text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
    display: block;
 }
 
+.header .flex {
+   flex-direction: column;
+   padding: 1rem;
+ }
+
+ .header .flex .navbar {
+   margin-top: 1rem;
+   text-align: center;
+   display: flex;
+   justify-content: center; 
+ }
+
+ .header .flex .navbar.active {
+   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+ }
+
+ .header .flex .navbar ul li {
+   display: block;
+ }
+
+ .header .flex .navbar ul li ul {
+   position: absolute;
+   top: 100%;
+   left: 0;
+   width: 15rem;
+   background-color: var(--white);
+   animation: fadeIn .2s linear;
+   display: none;
+ }
+
+ .header .flex .navbar ul li ul li {
+   padding-left: 2rem;
+ }
+}
+
+.header .flex .navbar a {
+   margin: 0 0.1rem;
+   display: inline-block; 
+   font-size: 1.8rem;
+}
+
 /* Add these styles for success message */
 .success-message {
    color: green;
    display: none;
 }
 
-}
+
+
+@media (max-width: 320px) {
+   .header .flex .navbar a {
+     margin: 0 0.1rem; /* Adjust the margin as needed */
+     display: inline-block; /* Ensure the links are displayed as blocks */
+     font-size: 5%;
+
+   }
+
+   html{
+      font-size: 40%;
+   }
+   
+ }
+ 
+
+
 
 .opaque-header {
    background-color: rgba(255, 255, 255, 0.5) !important;

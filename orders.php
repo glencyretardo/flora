@@ -56,7 +56,7 @@ session_start();
             <?php
             }
         } else {
-            echo "No orders found.";
+           
         }
         ?>
     </div>

@@ -113,7 +113,7 @@ $total_products = implode(', ', $cart_products);
 
                 <div class="inputBox">
                     <span>Contact Number:</span>
-                    <input type="number" name="number" min="0" id="number">
+                    <input type="number" name="number" min="1" id="number">
                     <span id="numberError" style="color: red;"></span>
                 </div>
 
@@ -136,7 +136,7 @@ $total_products = implode(', ', $cart_products);
 
                 <div class="inputBox">
                     <span>House No.:</span>
-                    <input type="number" name="house" min="0" id="house">
+                    <input type="number" name="house" min="1" id="house">
                     <span id="houseError" style="color: red;"></span>
                 </div>
 
@@ -166,7 +166,7 @@ $total_products = implode(', ', $cart_products);
 
                 <div class="inputBox">
                     <span>Zip Code:</span>
-                    <input type="number" min="0" name="pin_code" id="pin_code">
+                    <input type="number" min="1" name="pin_code" id="pin_code">
                     <span id="pin_codeError" style="color: red;"></span>
                 </div>
 
