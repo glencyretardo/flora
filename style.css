@@ -1304,7 +1304,7 @@ text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
    .header .flex .navbar a {
      margin: 0 0.1rem; /* Adjust the margin as needed */
       /* Ensure the links are displayed as blocks */
-     font-size: 20%;
+     font-size: 35%;
 
    }
 
