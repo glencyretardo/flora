@@ -2,13 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Arizonia&display=swap');
 
 :root{
-   --pink:#d38c8c;
-   --red:#80453e;
-   --orange:#a88356;
-   --black:rgb(76, 70, 55);
-   --white:#f7ecec;
-   --light-color:#817f7f;
-   --light-white:#f2e9e9;
+   --pink:#cfacacdb;
+   --red:#3d4522e7;
+   --orange:#cc9178e4;
+   --black:#988478;
+   --white:#fff;
+   --light-color:#666;
+   --light-white:#ccc;
    --light-bg:#f5f5f5;
    --border:.1rem solid rgba(31, 19, 19, 0.1);
    --box-shadow:0 .5rem 1rem rgba(31, 19, 19, 0.1);
@@ -120,6 +120,7 @@ section{
 
 .btn{
    background-color: var(--pink);
+   
 }
 
 .delete-btn{
@@ -279,7 +280,7 @@ section{
 }
 
 .header .flex .logo{
-   font-size: 2.5rem;
+   font-size: 4rem;
    color:var(--pink);
 }
 
@@ -429,12 +430,12 @@ section{
 
 .products .box-container{
    max-width: 1200px;
-   margin:0 auto;
+   margin: 0 auto;
    display: grid;
-   grid-template-columns: repeat(auto-fit, 33rem);
-   gap:1.5rem;
-   align-items: flex-start;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted for responsiveness */
+   gap: 1.5rem;
    justify-content: center;
+   align-items: flex-start;
 }
 
 .products .box-container .box{
@@ -445,7 +446,6 @@ section{
    padding:2rem;
    text-align: center;
    position: relative;
-   justify-content: center;
 }
 
 .products .box-container .box .image{
@@ -715,7 +715,7 @@ section{
 }
 
 
-.cart .box-container{
+.shopping-cart .box-container{
    max-width: 1200px;
    margin:0 auto;
    display: grid;
@@ -725,7 +725,7 @@ section{
    justify-content: center;
 }
 
-.cart .box-container .box{
+.shopping-cart .box-container .box{
    padding:2rem;
    text-align: center;
    background-color: var(--white);
@@ -735,14 +735,14 @@ section{
    position: relative;
 }
 
-.cart .box-container .box .image{
+.shopping-cart .box-container .box .image{
    height: 35rem;
    width: 100%;
    object-fit: cover;
 }
 
-.cart .box-container .box .fa-eye,
-.cart .box-container .box .fa-times{
+.shopping-cart .box-container .box .fa-eye,
+.shopping-cart .box-container .box .fa-times{
    position: absolute;
    top:1rem;
    height: 4.5rem;
@@ -752,40 +752,40 @@ section{
    border-radius: .5rem;
 }
 
-.cart .box-container .box .fa-eye{
+.shopping-cart .box-container .box .fa-eye{
    right:1rem;
    border:var(--border);
    background-color: var(--white);
    color:var(--black);
 }
 
-.cart .box-container .box .fa-eye:hover{
+.shopping-cart .box-container .box .fa-eye:hover{
    background-color: var(--black);
    color:var(--white);
 }
 
-.cart .box-container .box .fa-times{
+.shopping-cart .box-container .box .fa-times{
    background-color: var(--red);
    color:var(--white);
 }
 
-.cart .box-container .box .fa-times:hover{
+.shopping-cart .box-container .box .fa-times:hover{
    background-color: var(--black);
 }
 
-.cart .box-container .box .name{
+.shopping-cart .box-container .box .name{
    font-size: 2rem;
    color:var(--black);
    margin:1rem 0;
 }
 
-.cart .box-container .box .price{
+.shopping-cart .box-container .box .price{
    font-size: 2.5rem;
    color:var(--red);
    margin:.5rem 0;
 }
 
-.cart .box-container .box .qty{
+.shopping-cart .box-container .box .qty{
    width: 9rem;
    padding:1.2rem 1.4rem;
    border-radius: .5rem;
@@ -793,17 +793,17 @@ section{
    font-size: 1.8rem;
 }
 
-.cart .box-container .box .sub-total{
+.shopping-cart .box-container .box .sub-total{
    margin-top: 1.5rem;
    font-size: 2rem;
    color:var(--light-color);
 }
 
-.cart .box-container .box .sub-total span{
+.shopping-cart .box-container .box .sub-total span{
    color:var(--red);
 }
 
-.cart .cart-total{
+.shopping-cart .cart-total{
    max-width: 1200px;
    margin:0 auto;
    padding:2rem;
@@ -815,14 +815,14 @@ section{
    margin-top: 2rem;
 }
 
-.cart .cart-total p{
+.shopping-cart .cart-total p{
    font-size: 2.5rem;
    color:var(--light-color);
    margin-bottom: 1rem;
    
 }
 
-.cart .cart-total p span{
+.shopping-cart .cart-total p span{
    color:var(--red);
 }
 
@@ -953,74 +953,61 @@ section{
    color:var(--red);
 }
 
-/* Checkout form container */
-.checkout-container {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100vh;
-}
 
-/* Checkout form */
-.checkout form {
+.checkout form{
    background-color: var(--white);
-   border: var(--border);
+   border:var(--border);
    max-width: 1200px;
-   margin: 0 auto;
+   margin:0 auto;
    border-radius: .5rem;
-   padding: 2rem;
+   padding:2rem;
    box-shadow: var(--border);
-   text-align: center; /* Center the form */
 }
 
-/* Checkout form headings */
-.checkout form h3 {
+.checkout form h3{
+   padding:1.5rem;
    font-size: 2.5rem;
    margin-bottom: 2rem;
    background-color: var(--black);
-   color: var(--white);
+   color:var(--white);
    border-radius: .5rem;
+   text-align: center;
    text-transform: capitalize;
 }
 
-/* Checkout form input containers */
-.checkout form .flex {
+.checkout form .flex{
    display: flex;
    flex-wrap: wrap;
-   gap: 1.5rem;
-   justify-content: center; /* Center the input boxes */
+   gap:1.5rem;
 }
 
-/* Checkout form input boxes */
-.checkout form .flex .inputBox {
-   flex: 1 1 40rem;
-   text-align: left; /* Align text to left within input boxes */
-}
-
-
-/* Checkout form input labels */
-.checkout form .flex .inputBox span {
-   font-size: 2rem;
-   color: var(--light-color);
+.checkout form .flex .inputBox{
+   flex:1 1 40rem;
 }
 
 .checkout form .flex .inputBox input,
-.checkout form .flex .inputBox select {
-   margin: 1rem 0;
+.checkout form .flex .inputBox select{
+   margin:1rem 0;
    width: 100%;
    background-color: var(--light-bg);
-   padding: 1.2rem 1.4rem;
-   border: var(--border);
-   font-size: 2.2rem; /* Increase input font size */
-   color: var(--black);
+   padding:1.2rem 1.4rem;
+   border:var(--border);
+   font-size: 1.8rem;
+   color:var(--black);
    border-radius: .5rem;
+}
+
+.checkout form .flex .inputBox span{
+   font-size: 2rem;
+   color:var(--light-color);
 }
 
 
 .placed-orders .box-container {
    display: flex;
-   flex-wrap: wrap;
+   flex-wrap: wrap; 
    gap: 2rem;
+   
 }
 
 .placed-orders .box-container .box {
@@ -1028,10 +1015,10 @@ section{
    padding: 1rem 2rem;
    border: var(--border);
    box-shadow: var(--box-shadow);
-   flex: 1 1 calc(25% - 2rem); /* Adjusted to fit four boxes in one line */
-   max-width: calc(25% - 2rem); /* Adjusted to fit four boxes in one line */
    border-radius: .5rem;
    margin-bottom: 2rem;
+   overflow: hidden;
+   position: relative;
 }
 
 .placed-orders .box-container .box p {
@@ -1096,7 +1083,7 @@ section{
 .footer .box-container{
    max-width: 1200px;
    margin: 0 auto;
-   display: flex;
+   display: grid;
    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
    gap: 1.5rem;
    align-items: flex-start;
@@ -1104,14 +1091,6 @@ section{
    
 }
 
-.footer .box a img {
-   max-width: 100%;
-   height: 100;
-   display: block;
-   margin: 0 auto;
-   width: 200px; 
-   margin-top: 0px;
-}
 
 .footer .box-container .box h3{
    font-size: 2.2rem;
@@ -1188,14 +1167,15 @@ text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
 
 }
 
-@media (max-width:768px){
+@media (max-width:600px){
 
    #menu-btn{
-      display: inline-block;
+      display:none;
    }
 
    .header .flex{
-      padding:2rem;
+      flex-direction: column;
+        padding: 1rem;
    }
 
    .header .flex .navbar{
@@ -1210,15 +1190,17 @@ text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
    }
 
    .header .flex .navbar ul li{
-      width: 100%;
-      padding:.5rem;
+      display: block;
    }
 
    .header .flex .navbar ul li ul{
-      position: static;
-      width: 100%;
-      animation: none;
-      background-color: var(--light-bg);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 15rem;
+      background-color: var(--white);
+      animation: fadeIn .2s linear;
+      display: none;
    }
 
    .header .flex .navbar ul li ul li{
@@ -1321,8 +1303,8 @@ text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
 @media (max-width: 320px) {
    .header .flex .navbar a {
      margin: 0 0.1rem; /* Adjust the margin as needed */
-     display: inline-block; /* Ensure the links are displayed as blocks */
-     font-size: 5%;
+      /* Ensure the links are displayed as blocks */
+     font-size: 20%;
 
    }
 
@@ -1338,5 +1320,3 @@ text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
 .opaque-header {
    background-color: rgba(255, 255, 255, 0.5) !important;
 }
-
-
