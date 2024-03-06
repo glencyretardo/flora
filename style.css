@@ -1119,8 +1119,8 @@ section{
 
 .footer .credit span{
    color:var(--orange);
-   text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
-   }
+text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
+}
 
 .dropdown-content {
    display: none;
@@ -1172,6 +1172,7 @@ section{
       margin-top: 1rem;
       text-align: center;
       display: flex;
+      justify-content: center; 
    }
 
    .header .flex .navbar.active{
@@ -1203,6 +1204,16 @@ section{
    .products .box-container {
       grid-template-columns: repeat(1, minmax(300px, 1fr)); /* Adjusted for smaller screens */
   }
+  .header .flex .navbar a {
+   margin: 0 0.1rem; /* Adjust the margin as needed */
+   display: inline-block; /* Ensure the links are displayed as blocks */
+   font-size: 1.8rem;
+}
+
+/* Ensure the account box stays on the same line */
+.header .flex .account-box {
+   white-space: nowrap;
+}
 }
 
 
