@@ -404,6 +404,8 @@ section{
    left: 50%; /* Move content 50% from the left */
    transform: translate(-50%, -50%); /* Center the content horizontally and vertically */
    z-index: 1; /* Increase z-index to bring content above background image */
+   border: 2px solid var(--black); /* Adjust the border color and size as needed */
+   padding: 3rem
 }
 
 .home .content h3 {

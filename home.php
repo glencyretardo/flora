@@ -92,16 +92,16 @@ if (isset($_POST['add_to_cart'])) {
 <section class="home">
     <img src="images/yeyu.png" alt="Basket Flowers" class="background-image">
     <div class="content">
-       <h3>new collections</h3>
-       <p>Welcome to Flora shop! Browse our new collections for you to check-out. These collections will make your loved ones heart flutter. </p>
-       <a href="about.php" class="btn">discover more</a>
+       <h3>Happiness Blooms From Within</h3>
+       <p>Welcome to Flora shop! Browse our shop for you to check-out. These collections will make your loved ones heart flutter. </p>
+       <a href="shop.php" class="btn">discover more</a>
     </div>
 
 
 </section>
 
 <section class="products">
-    <h1 class="title">latest products</h1>
+    <h1 class="title">Recommended For You</h1>
     <div class="box-container">
         <?php
         $select_products = mysqli_query($conn, "SELECT * FROM `product` LIMIT 6") or die('query failed');
