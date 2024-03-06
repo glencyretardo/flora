@@ -116,16 +116,10 @@ section{
    cursor: pointer;
    padding:1rem 3rem;
    text-transform: capitalize;
-margin-bottom: 1rem;
-   
 }
 
 .btn{
    background-color: var(--pink);
-display: block; /* Change to block element */
-   margin: 0 auto; 
-   font-size: 2rem;
-   
    
 }
 
@@ -136,6 +130,7 @@ display: block; /* Change to block element */
 .option-btn{
    background-color: var(--orange);
 }
+
 
 .btn:hover,
 .delete-btn:hover,
@@ -558,9 +553,10 @@ display: block; /* Change to block element */
 }
 
 .home-contact .content h3{
-   text-transform: uppercase;
+  
    color:var(--white);
-   font-size: 3rem;
+   font-style: italic;
+   font-size: 2.5rem;
 }
 
 .home-contact .content p{
@@ -1023,7 +1019,7 @@ display: block; /* Change to block element */
 }
 
 .placed-orders .box-container .box p span {
-   color: var(--pink);
+   color: var(--black);
 }
 
 .search-form form{
@@ -1053,7 +1049,23 @@ display: block; /* Change to block element */
    margin-right: 5px; /* Add some spacing between the icon and text */
    color: var(--light-white)
 }
+.fa-arrow-left:hover {
+   color: white; /* Change the color to white on hover */
+}
 
+.backViewPage {
+   display: inline-block;
+   margin-right: 10px; /* Adjust margin as needed */
+   color: var(--light-white); 
+   padding: 5px; /* Add padding */
+}
+.backViewPage a {
+   color: var(--light-white); /* Set color as needed */
+}
+.backViewPage a:hover .fa-arrow-left {
+      color: var(--black); /* Change text color on hover */
+   
+}
 .footer{
    background-color: var(--white);
 }

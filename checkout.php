@@ -48,6 +48,9 @@ $total_products = implode(', ', $cart_products);
 
             mysqli_query($conn, "DELETE FROM cart WHERE UserID = '$user_id'") or die('Query failed');
             $message[] = 'Order placed successfully!';
+
+            header('Location: orders.php');
+            exit();
         }
     }
 }
@@ -175,6 +178,7 @@ $total_products = implode(', ', $cart_products);
                 </div>
 
             <input type="submit" name="order" value="Order Now" class="btn">
+            
         </form>
     </div>
 </section>

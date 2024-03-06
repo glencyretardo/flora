@@ -136,8 +136,8 @@ if (isset($_POST['add_to_cart'])) {
 <section class="home-contact">
 
 <div class="content">
-    <h3>have any questions?</h3>
-    <p>You can reach us out in the provided details below for any further questions or inquiries.</p>
+    <h3>Have something comming up? <hr>let us help you.</h3>
+    <p>You can reach us out for any further questions or inquiries.</p>
     <a href="contact.php" class="btn">contact us</a>
 </div>
 </section>
