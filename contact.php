@@ -1,202 +1,120 @@
 <?php
+require_once 'database.php';
+
 session_start();
-require_once 'database.php';
 
-$success_message = ''; // Variable to store success message
-$error_message = ''; // Variable to store error message
+$user_id = $_SESSION['user_id'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve form data
-    $name = isset($_POST['name']) ? $_POST['name'] : '';
-    $email = isset($_POST['email']) ? $_POST['email'] : '';
-    $number = isset($_POST['number']) ? $_POST['number'] : '';
-    $message = isset($_POST['message']) ? $_POST['message'] : '';
+if (!isset($user_id)) {
+    header('location:login.php');
+}
 
-    // Email validation
+$message = ''; // Variable to store error or success message
+
+if (isset($_POST['send'])) {
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $number = mysqli_real_escape_string($conn, $_POST['number']);
+    $msg = mysqli_real_escape_string($conn, $_POST['message']);
+
+    $select_message = mysqli_query($conn, "SELECT * FROM message WHERE Name = '$name' AND Email = '$email' AND ContactNumber = '$number' AND MessageContent = '$msg'") or die('query failed');
+
+    // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error_message = 'Invalid email format';
+        $emailError = 'Invalid email format';
+    }
+    
+    if (mysqli_num_rows($select_message) > 0) {
+        $message = 'Message has already been sent!';
     } else {
-        // Phone number validation
-        $number = preg_replace('/[^0-9]/', '', $number); // Remove non-numeric characters
-        if (strlen($number) !== 11) {
-            $error_message = 'Phone number must be exactly 11 digits';
+
+        $insert_query = "INSERT INTO `message` ( Name, Email, ContactNumber, MessageContent) VALUES ( '$name', '$email', '$number', '$msg')";
+        if (mysqli_query($conn, $insert_query)) {
+            $message = 'Message sent successfully!';
         } else {
-            // Using prepared statements to prevent SQL injection
-            $insert_query = "INSERT INTO message (Name, Email, ContactNumber, MessageContent) VALUES (?, ?, ?, ?)";
-
-            // Prepare the statement
-            $stmt = mysqli_prepare($conn, $insert_query);
-
-            // Bind parameters to the statement
-            mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $number, $message);
-
-            // Execute the statement
-            $result = mysqli_stmt_execute($stmt);
-
-            if ($result) {
-                $success_message = "Data inserted successfully!";
-            } else {
-                $error_message = "Error: " . mysqli_error($conn);
-            }
-
-            // Close the statement
-            mysqli_stmt_close($stmt);
+            $message = 'Error: ' . mysqli_error($conn);
         }
     }
 }
+
+
 ?>
-<?php
-
-require_once 'database.php';
-
-$success_message = ''; // Variable to store success message
-$error_message = ''; // Variable to store error message
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve form data
-    $name = isset($_POST['name']) ? $_POST['name'] : '';
-    $email = isset($_POST['email']) ? $_POST['email'] : '';
-    $number = isset($_POST['number']) ? $_POST['number'] : '';
-    $message = isset($_POST['message']) ? $_POST['message'] : '';
-
-    // Email validation
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error_message = 'Invalid email format';
-    } else {
-        // Phone number validation
-        $number = preg_replace('/[^0-9]/', '', $number); // Remove non-numeric characters
-        if (strlen($number) !== 11) {
-            $error_message = 'Phone number must be exactly 11 digits';
-        } else {
-            // Using prepared statements to prevent SQL injection
-            $insert_query = "INSERT INTO message (Name, Email, ContactNumber, MessageContent) VALUES (?, ?, ?, ?)";
-
-            // Prepare the statement
-            $stmt = mysqli_prepare($conn, $insert_query);
-
-            // Bind parameters to the statement
-            mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $number, $message);
-
-            // Execute the statement
-            $result = mysqli_stmt_execute($stmt);
-
-            if ($result) {
-                $success_message = "Data inserted successfully!";
-            } else {
-                $error_message = "Error: " . mysqli_error($conn);
-            }
-
-            // Close the statement
-            mysqli_stmt_close($stmt);
-        }
-    }
-}
-?>
-<!-- ... (rest of your HTML code remains unchanged) ... -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>contact</title>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-   <link rel="stylesheet" href="style.css">
-   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+
+    <!-- Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom CSS file link -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .error-message {
+            color: red; /* Set the color of the error message */
+            font-size: 12px; /* Adjust font size if needed */
+        }
+    </style>
 </head>
 <body>
    
 <?php include 'header.php'; ?>
 
 <section class="heading">
-    <h3>contact us</h3>
-    <a id="backButton" href="home.php"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
-
+    <h3>Contact Us</h3>
+    <p><a href="home.php">Home</a> / Contact</p>
 </section>
 
 <section class="contact">
-    <form action="" method="POST" id="contactForm">
-        <h3>send us a message!</h3>
-        <input type="text" name="name" placeholder="enter your name" class="box" required> 
-        <input type="email" name="email" id="email" placeholder="enter your email" class="box" required>
-        <span id="email-error" class="error-message"></span>
-        <input type="tel" name="number" id="number" placeholder="Contact Number" class="box" required>
-        <span id="number-error" class="error-message"></span>
-        <textarea name="message" class="box" placeholder="enter your message" required cols="30" rows="10"></textarea>
-        <input type="submit" value="send message" name="send" class="btn" id="sendBtn" disabled>
-        <div id="success-message" class="success-message"></div>
+    <form action="" method="POST" onsubmit="return validateForm()" novalidate> <!-- Add novalidate attribute to disable browser validation -->
+        <h3>Send us a message!</h3>
+        <input type="text" name="name" id="name" placeholder="Enter your name" class="box" required> 
+        <br>
+        <input type="email" name="email" id="email" placeholder="Enter your email" class="box" required>
+        <span id="email-error" class="error-message"></span> <!-- Error message for email -->
+        <br>
+        <input type="tel" name="number" id="number" placeholder="Enter your number" class="box" required>
+        <span id="number-error" class="error-message"></span> <!-- Error message for number -->
+        <br>
+        <textarea name="message" class="box" placeholder="Enter your message" required cols="30" rows="10"></textarea>
+        <br>
+        <input type="submit" value="Send Message" name="send" class="btn">
+        <!-- <div class="message"><?php echo $message; ?></div> -->
     </form>
 </section>
-
 
 <?php include 'footer.php'; ?>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var contactForm = document.getElementById('contactForm');
-        var successMessage = document.getElementById('success-message');
-        var emailInput = document.getElementById('email');
-        var emailError = document.getElementById('email-error');
-        var numberInput = document.getElementById('number');
-        var numberError = document.getElementById('number-error');
-        var sendBtn = document.getElementById('sendBtn');
+    function validateForm() {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var number = document.getElementById('number').value;
 
-        contactForm.addEventListener('submit', function (event) {
-            // Prevent the form from submitting normally
-            event.preventDefault();
-
-            // Your AJAX or form submission logic here
-
-            // Check for validation errors
-            if (emailInput.validity.valid && numberInput.value.length === 12) {
-                // Display success message
-                successMessage.innerText = 'Message Sent!';
-                successMessage.style.display = 'block';
-
-                // Reset form fields after 5 seconds
-                setTimeout(function () {
-                    successMessage.style.display = 'none';
-                    contactForm.reset();
-                }, 900);
-            } else {
-                // Display email and/or phone number error
-                emailError.innerText = emailInput.validity.valid ? '' : 'Enter a valid email address';
-                numberError.innerText = validatePhoneNumber(numberInput.value);
-            }
-        });
-
-        // Event listener for the email input
-        emailInput.addEventListener('input', function () {
-            var isValid = emailInput.validity.valid;
-            emailError.innerText = isValid ? '' : 'Enter a valid email address';
-            updateSendButton();
-        });
-
-        // Event listener for the number input
-        numberInput.addEventListener('input', function () {
-            var isValidNumber = /^\d+$/.test(numberInput.value);
-            numberError.innerText = isValidNumber ? validatePhoneNumber(numberInput.value) : 'Phone number must contain only numeric characters';
-            updateSendButton();
-        });
-
-        // Function to update the state of the "send message" button
-        function updateSendButton() {
-            sendBtn.disabled = !(emailInput.validity.valid && numberInput.value.length === 12);
+        // Validate email format
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById('email-error').innerText = 'Please enter a valid email address.'; // Show error message
+            return false;
+        } else {
+            document.getElementById('email-error').innerText = ''; // Clear error message if valid
         }
 
-        // Function to validate the phone number
-        function validatePhoneNumber(phoneNumber) {
-            return phoneNumber.length === 11 ? '' : 'Phone number must be exactly 11 digits';
+        // Validate number format and length
+        var numberPattern = /^\d{11}$/;
+        if (!numberPattern.test(number)) {
+            document.getElementById('number-error').innerText = 'Please enter a 11-digit contact number.'; // Show error message
+            return false;
+        } else {
+            document.getElementById('number-error').innerText = ''; // Clear error message if valid
         }
-    });
-</script>
 
-<script>
-    document.getElementById("backButton").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent default behavior of anchor element
-        window.location.href = this.href; // Navigate to the specified href
-    });
+        return true;
+    }
 </script>
 
 </body>
