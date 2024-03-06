@@ -91,6 +91,20 @@ section{
    user-select: none;
 }
 
+.note {
+   font-family: 'Rubik', sans-serif;
+   padding: 1.5rem;
+   font-size: 2rem;
+   color: var(--orange); /* Same color as --orange from :root */
+   /* border: var(--border); */
+   /* box-shadow: var(--box-shadow); */
+   text-align: center;
+   /* background-color: var(--white); */
+   /* border-radius: .5rem; */
+   text-transform: capitalize;
+}
+
+
 .btn,
 .delete-btn,
 .option-btn{
@@ -115,6 +129,7 @@ section{
 .option-btn{
    background-color: var(--orange);
 }
+
 
 .btn:hover,
 .delete-btn:hover,
@@ -217,6 +232,16 @@ section{
    margin:1rem 0;
    border-radius: .5rem;
 }
+
+.form-container form .error {
+   font-size: 1.3rem; /* Adjust the font size of the error message */
+   color: rgb(192, 5, 5); /* Make the error message text red */
+   text-align: left; /* Align the error message to the left */
+   margin-top: 0.5rem; /* Add some top margin for spacing */
+    margin-left: 3rem;
+}
+
+
 
 .form-container form p{
    margin-top: 1.5rem;
@@ -538,9 +563,10 @@ section{
 }
 
 .home-contact .content h3{
-   text-transform: uppercase;
+  
    color:var(--white);
-   font-size: 3rem;
+   font-style: italic;
+   font-size: 2.5rem;
 }
 
 .home-contact .content p{
@@ -800,6 +826,99 @@ section{
    color:var(--red);
 }
 
+.wishlist .box-container{
+   max-width: 1200px;
+   margin:0 auto;
+   display: grid;
+   grid-template-columns: repeat(auto-fit, 33rem);
+   gap:1.5rem;
+   align-items: flex-start;
+   justify-content: center;
+}
+
+.wishlist .box-container .box{
+   padding:2rem;
+   text-align: center;
+   background-color: var(--white);
+   border:var(--border);
+   box-shadow: var(--box-shadow);
+   border-radius: .5rem;
+   position: relative;
+}
+
+.wishlist .box-container .box .image{
+   height: 35rem;
+   width: 100%;
+   object-fit: cover;
+}
+
+.wishlist .box-container .box .fa-eye,
+.wishlist .box-container .box .fa-times{
+   position: absolute;
+   top:1rem;
+   height: 4.5rem;
+   width: 4.5rem;
+   line-height: 4.3rem;
+   font-size: 2rem;
+   border-radius: .5rem;
+}
+
+.wishlist .box-container .box .fa-eye{
+   right:1rem;
+   border:var(--border);
+   background-color: var(--white);
+   color:var(--black);
+}
+
+.wishlist .box-container .box .fa-eye:hover{
+   background-color: var(--black);
+   color:var(--white);
+}
+
+.wishlist .box-container .box .fa-times{
+   background-color: var(--red);
+   color:var(--white);
+}
+
+.wishlist .box-container .box .fa-times:hover{
+   background-color: var(--black);
+}
+
+.wishlist .box-container .box .name{
+   font-size: 2rem;
+   color:var(--black);
+   margin:1rem 0;
+}
+
+.wishlist .box-container .box .price{
+   font-size: 2.5rem;
+   color:var(--red);
+   margin:.5rem 0;
+}
+
+.wishlist .wishlist-total{
+   max-width: 1200px;
+   margin:0 auto;
+   padding:2rem;
+   text-align: center;
+   background-color: var(--white);
+   border:var(--border);
+   box-shadow: var(--box-shadow);
+   border-radius: .5rem;
+   margin-top: 2rem;
+}
+
+.wishlist .wishlist-total p{
+   font-size: 2.5rem;
+   color:var(--light-color);
+   margin-bottom: 1rem;
+}
+
+.wishlist .wishlist-total p span{
+   color:var(--red);
+}
+
+
 .display-order{
    max-width: 1200px;
    margin:0 auto;
@@ -923,7 +1042,7 @@ section{
 }
 
 .placed-orders .box-container .box p span {
-   color: var(--pink);
+   color: var(--black);
 }
 
 .search-form form{
@@ -953,7 +1072,23 @@ section{
    margin-right: 5px; /* Add some spacing between the icon and text */
    color: var(--light-white)
 }
+.fa-arrow-left:hover {
+   color: white; /* Change the color to white on hover */
+}
 
+.backViewPage {
+   display: inline-block;
+   margin-right: 10px; /* Adjust margin as needed */
+   color: var(--light-white); 
+   padding: 5px; /* Add padding */
+}
+.backViewPage a {
+   color: var(--light-white); /* Set color as needed */
+}
+.backViewPage a:hover .fa-arrow-left {
+      color: var(--black); /* Change text color on hover */
+   
+}
 .footer{
    background-color: var(--white);
 }
@@ -1014,8 +1149,10 @@ section{
 }
 
 .footer .credit span{
-   color:var(--pink);
+   color:var(--orange);
+text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
 }
+
 .dropdown-content {
    display: none;
    position: absolute;
@@ -1062,12 +1199,10 @@ section{
    }
 
    .header .flex .navbar{
-      position: absolute;
-      top:99%; left:0; right:0;
-      background-color: var(--white);
-      border-top: var(--border);
-      border-bottom: var(--border);
-      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      margin-top: 1rem;
+      text-align: center;
+      display: flex;
+      justify-content: center; 
    }
 
    .header .flex .navbar.active{
@@ -1094,6 +1229,19 @@ section{
       font-size: 4rem;
    }
 
+   .products .box-container {
+      grid-template-columns: repeat(1, minmax(300px, 1fr)); /* Adjusted for smaller screens */
+  }
+  .header .flex .navbar a {
+   margin: 0 0.1rem; /* Adjust the margin as needed */
+   display: inline-block; /* Ensure the links are displayed as blocks */
+   font-size: 1.8rem;
+}
+
+/* Ensure the account box stays on the same line */
+.header .flex .account-box {
+   white-space: nowrap;
+}
 }
 
 
@@ -1101,7 +1249,7 @@ section{
 @media (max-width:450px){
 
    html{
-      font-size: 50%;
+      font-size: 40%;
    }
 
    .heading h3{
@@ -1121,14 +1269,74 @@ section{
    display: block;
 }
 
+.header .flex {
+   flex-direction: column;
+   padding: 1rem;
+ }
+
+ .header .flex .navbar {
+   margin-top: 1rem;
+   text-align: center;
+   display: flex;
+   justify-content: center; 
+ }
+
+ .header .flex .navbar.active {
+   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+ }
+
+ .header .flex .navbar ul li {
+   display: block;
+ }
+
+ .header .flex .navbar ul li ul {
+   position: absolute;
+   top: 100%;
+   left: 0;
+   width: 15rem;
+   background-color: var(--white);
+   animation: fadeIn .2s linear;
+   display: none;
+ }
+
+ .header .flex .navbar ul li ul li {
+   padding-left: 2rem;
+ }
+}
+
+.header .flex .navbar a {
+   margin: 0 0.1rem;
+   display: inline-block; 
+   font-size: 1.8rem;
+}
+
 /* Add these styles for success message */
 .success-message {
    color: green;
    display: none;
 }
+
+
+
+@media (max-width: 320px) {
+   .header .flex .navbar a {
+     margin: 0 0.1rem; /* Adjust the margin as needed */
+     display: inline-block; /* Ensure the links are displayed as blocks */
+     font-size: 5%;
+
+   }
+
+   html{
+      font-size: 40%;
+   }
+   
+ }
+ 
+
+
+
 .opaque-header {
    background-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 
-}

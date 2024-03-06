@@ -114,10 +114,10 @@ $conn->close();
             <input type="email" name="email" id="email" class="box" placeholder="Enter your email" required
                 oninput="validateEmail()"
                 value="<?php echo isset($_GET['email']) ? htmlspecialchars($_GET['email']) : ''; ?>">
-            <div id="emailError"></div>
+                <div id="emailError" class="error"></div>
             <input type="password" name="pass" id="pass" class="box" placeholder="Enter your password" required
                 oninput="validatePassword()">
-            <div id="passwordError"></div>
+                <div id="passwordError" class="error"></div>
             <input type="password" name="cpass" class="box" placeholder="Confirm your password" required>
             <input type="submit" class="btn" name="submit" value="Register now">
             <p>Already have an account? <a href="login.php">Login now</a></p>

@@ -64,20 +64,23 @@ if (isset($_GET['admin_logout'])) {
         </div>
     </div>
 </header>
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var userBtn = document.getElementById('user-btn');
         var accountBox = document.getElementById('account-box');
 
-        userBtn.addEventListener('click', function () {
-            accountBox.classList.toggle('visible');
-            var userBtnRect = userBtn.getBoundingClientRect();
+        if (userBtn && accountBox) {
+            userBtn.addEventListener('click', function () {
+                accountBox.classList.toggle('visible');
+                var userBtnRect = userBtn.getBoundingClientRect();
 
-        // Set the position of the account box below the user icon
-        accountBox.style.top = userBtnRect.bottom + 'px';
-        accountBox.style.left = userBtnRect.left + 'px';
-        });
+                // Set the position of the account box below the user icon
+                accountBox.style.top = userBtnRect.bottom + 'px';
+                accountBox.style.left = userBtnRect.left + 'px';
+            });
+        } else {
+            console.error('Error: Could not find elements with IDs user-btn or account-box.');
+        }
 
         function logout() {
             // Redirect to the login page

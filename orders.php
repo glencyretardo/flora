@@ -36,10 +36,12 @@ session_start();
 
     <div class="box-container">
         <?php
-        $select_orders = mysqli_query($conn, "SELECT * FROM `ordertable`") or die('query failed');
+        $user_id = $_SESSION['user_id'] ?? null;
+
+        $select_orders = mysqli_query($conn, "SELECT * FROM `ordertable` WHERE UserID = '$user_id'") or die('query failed');
         if (mysqli_num_rows($select_orders) > 0) {
             while ($fetch_orders = mysqli_fetch_assoc($select_orders)) {
-                ?>
+            ?>
                 <div class="box">
                     <p> placed on : <span><?php echo $fetch_orders['OrderDate']; ?></span> </p>
                     <p> name : <span><?php echo $fetch_orders['Name']; ?></span> </p>
@@ -48,13 +50,13 @@ session_start();
                     <p> address : <span><?php echo $fetch_orders['Address']; ?></span> </p>
                     <p> payment method : <span><?php echo $fetch_orders['PaymentMethod']; ?></span> </p>
                     <p> your orders : <span><?php echo $fetch_orders['TotalProducts']; ?></span> </p>
-                    <p> total price : <span>₱<?php echo $fetch_orders['TotalAmount']; ?></span> </p>
+                    <p> total price : <span>₱<?php echo number_format($fetch_orders['TotalAmount']); ?></span> </p>
                     <p> Order status : <span style="color:<?php echo ($fetch_orders['payment_status'] == 'pending') ? 'tomato' : 'green'; ?>"><?php echo $fetch_orders['payment_status']; ?></span> </p>
                 </div>
             <?php
             }
         } else {
-            echo "No orders found.";
+           
         }
         ?>
     </div>

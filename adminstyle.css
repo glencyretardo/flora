@@ -20,6 +20,15 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+
+.form-container form .error {
+    font-size: 1.3rem; /* Adjust the font size of the error message */
+    color: rgb(192, 5, 5); /* Make the error message text red */
+    text-align: left; /* Align the error message to the left */
+    margin-top: 0.5rem; /* Add some top margin for spacing */
+     margin-left: 3rem;
+ }
+
 .form {
     max-width: 300px;
 }

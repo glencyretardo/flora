@@ -80,7 +80,7 @@ if(isset($_GET['delete'])){
                <option disabled selected><?php echo $fetch_orders['payment_status']; ?></option>
                <option value="pending">pending</option>
                <option value="processing">processing</option>
-               <option value="shipped">shipped</option>
+               <option value="delivered">delivered</option>
                <option value="completed">completed</option>
             </select>
             <input type="submit" name="update_order" value="update" class="option-btn">

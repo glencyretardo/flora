@@ -93,8 +93,7 @@ if (isset($_POST['add_to_cart'])) {
 
 
 <section class="products">
-    <h1 class="title">latest products</h1>
-    <div class="box-container">
+        <div class="box-container">
         <?php
         $select_products = mysqli_query($conn, "SELECT * FROM `product` LIMIT 6") or die('query failed');
         if(mysqli_num_rows($select_products) > 0){
@@ -105,7 +104,7 @@ if (isset($_POST['add_to_cart'])) {
                 <div class="price">₱<?php echo number_format($fetch_products['Price']); ?></div>
                 <img src="uploaded_img/<?php echo $fetch_products['image']; ?>" alt="" class="image">
                 <div class="name"><?php echo $fetch_products['ProductName']; ?></div>
-                <input type="number" name="product_quantity" value="1" min="0" class="qty">
+                <input type="number" name="product_quantity" value="1" min="1" class="qty">
                 <input type="hidden" name="product_id" value="<?php echo $fetch_products['ProductID']; ?>">
                 <input type="hidden" name="product_name" value="<?php echo $fetch_products['ProductName']; ?>">
                 <input type="hidden" name="product_price" value="₱<?php echo number_format($fetch_products['Price']); ?>">

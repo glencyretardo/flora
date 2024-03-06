@@ -120,25 +120,25 @@ $conn->close();
     }
     ?>
 
-    <section class="form-container">
 
-        <form action="" method="post">
-            <h3>Register now</h3>
-            <input type="text" name="name" class="box" placeholder="Enter your username" required>
-            <input type="email" name="email" id="email" class="box" placeholder="Enter your email" required
-                oninput="validateEmail()"
-                value="<?php echo isset($_GET['email']) ? htmlspecialchars($_GET['email']) : ''; ?>">
-            <div id="emailError"></div>
-            <input type="password" name="pass" id="pass" class="box" placeholder="Enter your password" required
-                oninput="validatePassword()">
-            <div id="passwordError"></div>
-            <input type="password" name="cpass" class="box" placeholder="Confirm your password" required>
-            <input type="submit" class="btn" name="submit" value="Register now">
-            <p>Already have an account? <a href="login.php">Login now</a></p>
-            <p><a href="home.php">back to home </a></p>
-        </form>
+<section class="form-container">
+    <form action="" method="post">
+        <h3>Register now</h3>
+        <input type="text" name="name" class="box" placeholder="Enter your username" required>
+        <input type="email" name="email" id="email" class="box" placeholder="Enter your email" required oninput="validateEmail()" value="<?php echo isset($_GET['email']) ? htmlspecialchars($_GET['email']) : ''; ?>">
+        <div id="emailError" class="error"></div>
+        <input type="password" name="pass" id="pass" class="box" placeholder="Enter your password" required oninput="validatePassword()">
+       
+         <div id="passwordError" class="error"></div>
+        <input type="password" name="cpass" class="box" placeholder="Confirm your password" required>
+        <input type="submit" class="btn" name="submit" value="Register now">
+        <p>Already have an account? <a href="login.php">Login now</a></p>
+        <p><a href="home.php">back to home </a></p>
+    
+        
+    </form>
+</section>
 
-    </section>
 
 </body>
 

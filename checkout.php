@@ -1,9 +1,7 @@
 <?php
 
-include 'database.php';
-
 session_start();
-
+include 'database.php';
 $user_id = $_SESSION['user_id'];
 
 if (isset($_POST['order'])) {
@@ -45,11 +43,14 @@ $total_products = implode(', ', $cart_products);
             $message[] = 'Invalid email format!';
         } else {
             
-
+            
             mysqli_query($conn, "INSERT INTO ordertable(UserID, Name, ContactNumber, Email, PaymentMethod, Address, TotalProducts, TotalAmount, OrderDate) VALUES('$user_id', '$name', '$number', '$email', '$method', '$address', '$total_quantity', '$cart_total', NOW())") or die('Query failed');
 
             mysqli_query($conn, "DELETE FROM cart WHERE UserID = '$user_id'") or die('Query failed');
             $message[] = 'Order placed successfully!';
+
+            header('Location: orders.php');
+            exit();
         }
     }
 }
@@ -112,7 +113,7 @@ $total_products = implode(', ', $cart_products);
 
                 <div class="inputBox">
                     <span>Contact Number:</span>
-                    <input type="number" name="number" min="0" id="number">
+                    <input type="number" name="number" min="1" id="number">
                     <span id="numberError" style="color: red;"></span>
                 </div>
 
@@ -135,7 +136,7 @@ $total_products = implode(', ', $cart_products);
 
                 <div class="inputBox">
                     <span>House No.:</span>
-                    <input type="number" name="house" min="0" id="house">
+                    <input type="number" name="house" min="1" id="house">
                     <span id="houseError" style="color: red;"></span>
                 </div>
 
@@ -165,12 +166,19 @@ $total_products = implode(', ', $cart_products);
 
                 <div class="inputBox">
                     <span>Zip Code:</span>
-                    <input type="number" min="0" name="pin_code" id="pin_code">
+                    <input type="number" min="1" name="pin_code" id="pin_code">
                     <span id="pin_codeError" style="color: red;"></span>
                 </div>
+
             </div>
 
+            <div class="note">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>Note: No Cancellation.</span>
+                </div>
+
             <input type="submit" name="order" value="Order Now" class="btn">
+            
         </form>
     </div>
 </section>
@@ -278,8 +286,8 @@ if (number == "") {
 } else if (isNaN(number)) {
     document.getElementById("numberError").innerText = "Contact number must be a number";
     isValid = false;
-} else if (number.length < 2) {
-    document.getElementById("numberError").innerText = "Contact number must be at least 2 characters long";
+} else if (number.length !== 11) { // Check if the length is exactly 11 digits
+    document.getElementById("numberError").innerText = "Enter 11-digit number";
     isValid = false;
 } else {
     document.getElementById("numberError").innerText = "";
