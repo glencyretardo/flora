@@ -1191,7 +1191,7 @@ text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
 @media (max-width:768px){
 
    #menu-btn{
-      display: inline-block;
+      display:none;
    }
 
    .header .flex{
@@ -1306,7 +1306,7 @@ text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
 
 .header .flex .navbar a {
    margin: 0 0.1rem;
-   display: inline-block; 
+ 
    font-size: 1.8rem;
 }
 
@@ -1321,7 +1321,7 @@ text-shadow: 2px 2px 4px rgba(var(--light-color)); /* Add shadow effect */
 @media (max-width: 320px) {
    .header .flex .navbar a {
      margin: 0 0.1rem; /* Adjust the margin as needed */
-     display: inline-block; /* Ensure the links are displayed as blocks */
+     /* Ensure the links are displayed as blocks */
      font-size: 5%;
 
    }
